@@ -1,0 +1,1956 @@
+{
+  "allAbilities": {
+    "ability1": {
+      "description": " ",
+      "id": 0
+    }
+  },
+  "allItems": {
+    "item0": {
+      "description": " ",
+      "id": 0,
+      "title": "ErrorImplant"
+    },
+    "item1": {
+      "BonusDesc": "+10% Atk",
+      "description": "Sharp claw implant, that can even cut steel",
+      "id": 1,
+      "price": 1200,
+      "title": "Claw"
+    },
+    "item10": {
+      "bonusDesc": "+15% Def",
+      "id": 10,
+      "price": 1420,
+      "title": "Subdermal Armor"
+    },
+    "item11": {
+      "bonusDesc": "+20 accuracy to moves",
+      "id": 11,
+      "price": 1145,
+      "title": "Eye Accuracy"
+    },
+    "item12": {
+      "bonusDesc": "New Implant Attack",
+      "id": 12,
+      "price": 1530,
+      "title": "Eye Laser"
+    },
+    "item2": {
+      "BonusDesc": "+10% Def",
+      "description": "Titanium bone, that сan withstand a huge load",
+      "id": 2,
+      "price": 950,
+      "title": "CyberBone"
+    },
+    "item3": {
+      "BonusDesc": "+3% All stats",
+      "Description": "A capsule with mechanites that will improve your vix. But it's pretty painful",
+      "id": 3,
+      "price": 150,
+      "title": "MK1"
+    },
+    "item4": {
+      "BonusDesc": "+5% All stats",
+      "Description": "A capsule with mechanites that will improve your vix. But it's pretty painful",
+      "id": 4,
+      "price": 350,
+      "title": "MK2"
+    },
+    "item5": {
+      "BonusDesc": "+7% All stats",
+      "Description": "A capsule with mechanites that will improve your vix. But it's pretty painful",
+      "id": 5,
+      "price": 700,
+      "title": "MK3"
+    },
+    "item6": {
+      "BonusDesc": "+10% Speed",
+      "Description": "An implant that replaces Vix's leg and allows you to cross any distances and heights faster",
+      "id": 6,
+      "price": 870,
+      "title": "Jumper"
+    },
+    "item7": {
+      "BonusDesc": "Poison Bite Attack",
+      "Description": "Hydraulic jaws with incommensurable bite force, and fangs contain poison",
+      "id": 7,
+      "price": 1520,
+      "title": "CyberJaw"
+    },
+    "item8": {
+      "bonusDesc": "+10% HP",
+      "id": 8,
+      "price": 3500,
+      "title": "Cyber Heart"
+    },
+    "item9": {
+      "bonusDesc": "+5% crit.chance",
+      "id": 9,
+      "price": 1050,
+      "title": "EyeCrit"
+    }
+  },
+  "attacks": {
+    "attack0": {
+      "bonusName": "none",
+      "description": "Terrible otherworld corruption",
+      "id": 0,
+      "name": "Glitch",
+      "power": 20,
+      "type": "void",
+      "accuracy": 100
+    },
+    "attack1": {
+      "bonusName": "",
+      "description": "будет",
+      "id": 1,
+      "name": "Tear Bite",
+      "power": 10,
+      "type": "none",
+      "accuracy": 100
+    },
+    "attack2": {
+      "bonusName": "",
+      "description": "будет",
+      "id": 2,
+      "name": "Poison Bite",
+      "power": 10,
+      "type": "toxic",
+      "accuracy": 100
+    },
+    "attack3": {
+      "bonusName": "",
+      "description": "будет",
+      "id": 3,
+      "name": "Shark Power",
+      "power": 10,
+      "type": "toxic",
+      "accuracy": 100
+    },
+    "attack4": {
+      "bonusName": "",
+      "description": "будет",
+      "id": 4,
+      "name": "Water Jet",
+      "power": 10,
+      "type": "water",
+      "accuracy": 100
+    },
+    "attack5": {
+      "bonusName": "",
+      "description": "будет",
+      "id": 5,
+      "name": "Water Gun",
+      "power": 10,
+      "type": "water",
+      "accuracy": 100
+    },
+    "attack6": {
+      "bonusName": "",
+      "description": "будет",
+      "id": 6,
+      "name": "Water Bomb",
+      "power": 10,
+      "type": "water",
+      "accuracy": 100
+    },
+    "attack7": {
+      "bonusName": "",
+      "description": "будет",
+      "id": 7,
+      "name": "Tail Attack",
+      "power": 10,
+      "type": "none",
+      "accuracy": 100
+    },
+    "attack8": {
+      "bonusName": "",
+      "description": "будет",
+      "id": 8,
+      "name": "Harpoon Strike",
+      "power": 10,
+      "type": "none",
+      "accuracy": 100
+    },
+    "attack9": {
+      "bonusName": "",
+      "description": "будет",
+      "id": 9,
+      "name": "Lightning Harpoon",
+      "power": 10,
+      "type": "electric",
+      "accuracy": 100
+    },
+    "attack10": {
+      "bonusName": "",
+      "description": "будет",
+      "id": 10,
+      "name": "Intimidation",
+      "power": 10,
+      "type": "void",
+      "accuracy": 100
+    },
+    "attack11": {
+      "bonusName": "",
+      "description": "будет",
+      "id": 11,
+      "name": "Pack Bite",
+      "power": 10,
+      "type": "none",
+      "accuracy": 100
+    },
+    "attack12": {
+      "bonusName": "",
+      "description": "будет",
+      "id": 12,
+      "name": "Nature of Void",
+      "power": 10,
+      "type": "void",
+      "accuracy": 100
+    },
+    "attack13": {
+      "bonusName": "",
+      "description": "будет",
+      "id": 13,
+      "name": "Licking",
+      "power": 10,
+      "type": "none",
+      "accuracy": 100
+    },
+    "attack14": {
+      "bonusName": "",
+      "description": "будет",
+      "id": 14,
+      "name": "Tongue Wrapping",
+      "power": 10,
+      "type": "none",
+      "accuracy": 100
+    },
+    "attack15": {
+      "bonusName": "",
+      "description": "будет",
+      "id": 15,
+      "name": "Devouring",
+      "power": 10,
+      "type": "void",
+      "accuracy": 100
+    },
+    "attack16": {
+      "bonusName": "",
+      "description": "будет",
+      "id": 16,
+      "name": "Hot Body",
+      "power": 10,
+      "type": "fire",
+      "accuracy": 100
+    },
+    "attack17": {
+      "bonusName": "",
+      "description": "будет",
+      "id": 17,
+      "name": "Burning Rolling",
+      "power": 10,
+      "type": "fire",
+      "accuracy": 100
+    },
+    "attack18": {
+      "bonusName": "",
+      "description": "будет",
+      "id": 18,
+      "name": "Flamethrower",
+      "power": 10,
+      "type": "fire",
+      "accuracy": 100
+    },
+    "attack19": {
+      "bonusName": "",
+      "description": "будет",
+      "id": 19,
+      "name": "Sun Heat",
+      "power": 10,
+      "type": "fire",
+      "accuracy": 100
+    },
+    "attack20": {
+      "bonusName": "",
+      "description": "будет",
+      "id": 20,
+      "name": "Rhythmic buzzing",
+      "power": 10,
+      "type": "none",
+      "accuracy": 100
+    },
+    "attack21": {
+      "bonusName": "",
+      "description": "будет",
+      "id": 21,
+      "name": "Fluffy Cocoon",
+      "power": 10,
+      "type": "none",
+      "accuracy": 100
+    },
+    "attack22": {
+      "bonusName": "",
+      "description": "будет",
+      "id": 22,
+      "name": "Hieroglyph",
+      "power": 10,
+      "type": "ancient",
+      "accuracy": 100
+    },
+    "attack23": {
+      "bonusName": "",
+      "description": "будет",
+      "id": 23,
+      "name": "Runic Attack",
+      "power": 10,
+      "type": "ancient",
+      "accuracy": 100
+    },
+    "attack24": {
+      "bonusName": "",
+      "description": "будет",
+      "id": 24,
+      "name": "Memory of Ancients",
+      "power": 10,
+      "type": "ancient",
+      "accuracy": 100
+    },
+    "attack25": {
+      "bonusName": "",
+      "description": "будет",
+      "id": 22,
+      "name": "Forbidden Knowledge",
+      "power": 10,
+      "type": "void",
+      "accuracy": 100
+    },
+    "attack26": {
+      "bonusName": "",
+      "description": "будет",
+      "id": 26,
+      "name": "Spark",
+      "power": 10,
+      "type": "electric",
+      "accuracy": 100
+    },
+    "attack27": {
+      "bonusName": "",
+      "description": "будет",
+      "id": 27,
+      "name": "Electro Ball",
+      "power": 10,
+      "type": "electric",
+      "accuracy": 100
+    },
+    "attack28": {
+      "bonusName": "",
+      "description": "будет",
+      "id": 28,
+      "name": "Folding",
+      "power": 10,
+      "type": "none",
+      "accuracy": 100
+    },
+    "attack29": {
+      "bonusName": "",
+      "description": "будет",
+      "id": 29,
+      "name": "Pinwheel",
+      "power": 10,
+      "type": "none",
+      "accuracy": 100
+    },
+    "attack30": {
+      "bonusName": "",
+      "description": "будет",
+      "id": 30,
+      "name": "Cute Attack",
+      "power": 10,
+      "type": "none",
+      "accuracy": 100
+    },
+    "attack31": {
+      "bonusName": "",
+      "description": "будет",
+      "id": 31,
+      "name": "Monowheel",
+      "power": 10,
+      "type": "electric",
+      "accuracy": 100
+    },
+    "attack32": {
+      "bonusName": "",
+      "description": "будет",
+      "id": 32,
+      "name": "Electric Antenna",
+      "power": 10,
+      "type": "electric",
+      "accuracy": 100
+    },
+    "attack33": {
+      "bonusName": "",
+      "description": "будет",
+      "id": 33,
+      "name": "Spinning Storm",
+      "power": 10,
+      "type": "electric",
+      "accuracy": 100
+    },
+    "attack34": {
+      "bonusName": "",
+      "description": "будет",
+      "id": 34,
+      "name": "Absorb",
+      "power": 10,
+      "type": "grass",
+      "accuracy": 100
+    },
+    "attack35": {
+      "bonusName": "",
+      "description": "будет",
+      "id": 35,
+      "name": "Biting Root",
+      "power": 10,
+      "type": "grass",
+      "accuracy": 100
+    },
+    "attack36": {
+      "bonusName": "",
+      "description": "будет",
+      "id": 36,
+      "name": "Lash",
+      "power": 10,
+      "type": "grass",
+      "accuracy": 100
+    },
+    "attack37": {
+      "bonusName": "",
+      "description": "будет",
+      "id": 37,
+      "name": "Giant Root",
+      "power": 10,
+      "type": "grass",
+      "accuracy": 100
+    },
+    "attack38": {
+      "bonusName": "",
+      "description": "будет",
+      "id": 38,
+      "name": "Parasite Seed",
+      "power": 10,
+      "type": "grass",
+      "accuracy": 100
+    },
+    "attack39": {
+      "bonusName": "",
+      "description": "будет",
+      "id": 39,
+      "name": "Root Capture",
+      "power": 10,
+      "type": "grass",
+      "accuracy": 100
+    },
+    "attack40": {
+      "bonusName": "",
+      "description": "будет",
+      "id": 40,
+      "name": "Sweet Berry",
+      "power": 10,
+      "type": "mystic",
+      "accuracy": 100
+    },
+    "attack41": {
+      "bonusName": "",
+      "description": "будет",
+      "id": 41,
+      "name": "Shell Broke",
+      "power": 10,
+      "type": "none",
+      "accuracy": 100
+    },
+    "attack42": {
+      "bonusName": "",
+      "description": "будет",
+      "id": 42,
+      "name": "Burrow",
+      "power": 10,
+      "type": "none",
+      "accuracy": 100
+    },
+    "attack43": {
+      "bonusName": "",
+      "description": "будет",
+      "id": 43,
+      "name": "Reflection",
+      "power": 10,
+      "type": "mystic",
+      "accuracy": 100
+    },
+    "attack44": {
+      "bonusName": "",
+      "description": "будет",
+      "id": 44,
+      "name": "Amnesia",
+      "power": 10,
+      "type": "mystic",
+      "accuracy": 100
+    },
+    "attack45": {
+      "bonusName": "",
+      "description": "будет",
+      "id": 45,
+      "name": "?",
+      "power": 10,
+      "type": "mystic",
+      "accuracy": 100
+    }
+  },
+  "opponents": {
+    "opponent1": {
+      "id": 1,
+      "moneyForWin": 250,
+      "name": "BMO",
+      "rank": 1,
+      "team": {
+        "teamMember1": {
+          "DexId": 6,
+          "attacks": {
+            "attack1Id": 1,
+            "attack2Id": 1,
+            "attack3Id": 1,
+            "attackImplantId": 1
+          }
+        }
+      }
+    }
+  },
+  "users": {
+    "user0": {
+      "characterData": {
+        "character1": {
+          "busy": "false",
+          "id": 1,
+          "slot": 1
+        },
+        "character2": {
+          "busy": "false",
+          "id": 2,
+          "slot": 2
+        },
+        "character3": {
+          "busy": "false",
+          "id": 3,
+          "slot": 3
+        }
+      },
+      "personData": {
+        "email": "ss",
+        "id": 0,
+        "login": "sdsd",
+        "nickname": "dssd",
+        "password": "ss"
+      }
+    },
+    "user1": {
+      "characterData": {
+        "character": {
+          "2": {
+            "money": {
+              "money": 1000
+            }
+          }
+        },
+        "character1": {
+          "busy": "false",
+          "id": 4,
+          "slot": 1
+        },
+        "character2": {
+          "busy": "true",
+          "caughtWixling": {
+            "wixInSafe_1": {
+              "attacksId": {
+                "attack1": {
+                  "attackId": 0
+                },
+                "attack2": {
+                  "attackId": 1
+                },
+                "attack3": {
+                  "attackId": 2
+                },
+                "attack4": {
+                  "attackId": 3
+                }
+              },
+              "essenceGot": 120,
+              "hp": 50,
+              "id": 1,
+              "idInDex": 4,
+              "implantsId": {
+                "implant1": {
+                  "implantId": 0
+                }
+              },
+              "nickname": "Rin",
+              "status": " "
+            },
+            "wixInSafe_2": {
+              "essenceGot": 3700,
+              "hp": 100,
+              "id": 2,
+              "idInDex": 3,
+              "nickname": "Erza"
+            },
+            "wixInSafe_3": {
+              "attacksId": {
+                "attack1": {
+                  "attackId": 1
+                }
+              },
+              "essenceGot": 0,
+              "hp": 80,
+              "id": 3,
+              "idInDex": 6,
+              "implantsId": {
+                "implant1": {
+                  "implantId": 1
+                }
+              },
+              "nickname": "Mothaby",
+              "status": ""
+            },
+            "wixInSafe_4": {
+              "attacksId": {
+                "attack1": {
+                  "attackId": 1
+                }
+              },
+              "essenceGot": 0,
+              "hp": 120,
+              "id": 4,
+              "idInDex": 11,
+              "implantsId": {
+                "implant1": {
+                  "implantId": 1
+                }
+              },
+              "nickname": "Kalgesid",
+              "status": ""
+            },
+            "wixInSafe_5": {
+              "attacksId": {
+                "attack1": {
+                  "attackId": 1
+                }
+              },
+              "essenceGot": 0,
+              "hp": 85,
+              "id": 5,
+              "idInDex": 9,
+              "implantsId": {
+                "implant1": {
+                  "implantId": 1
+                }
+              },
+              "nickname": "Armark",
+              "status": ""
+            }
+          },
+          "essence": 0,
+          "id": 5,
+          "inventory": {
+            "item1": {
+              "active": "none",
+              "id": 0,
+              "itemId": 0,
+              "title": "ErrorImplant"
+            },
+            "item2": {
+              "count": 1,
+              "id": 2,
+              "itemId": 7,
+              "title": "CyberJaw"
+            },
+            "item3": {
+              "count": 1,
+              "id": 3,
+              "itemId": 5,
+              "title": "MK3"
+            },
+            "item4": {
+              "count": 1,
+              "id": 4,
+              "itemId": 8,
+              "title": "Cyber Heart"
+            },
+            "item5": {
+              "count": 1,
+              "id": 5,
+              "itemId": 4,
+              "title": "MK2"
+            }
+          },
+          "look": 3,
+          "money": 84695,
+          "nickname": "WixHunter",
+          "sex": "male",
+          "slot": 2,
+          "teamWixlings": {
+            "1_MemberIdInSafe": 1,
+            "2_MemberIdInSafe": 2
+          }
+        },
+        "character3": {
+          "busy": "false",
+          "id": 6,
+          "slot": 3
+        }
+      },
+      "personData": {
+        "email": "BMO@mail.ru",
+        "id": 1,
+        "login": "BMO",
+        "nickname": "BMO",
+        "password": "1"
+      }
+    },
+    "userundefined": {
+      "characterData": {
+        "character": {
+          "2": {
+            "money": {
+              "money": 400
+            }
+          }
+        },
+        "character2": {
+          "caughtWixling": {
+            "wixInSafe_3": {
+              "attacksId": {
+                "attack1": {
+                  "attackId": 1
+                }
+              },
+              "hp": 75,
+              "id": 3,
+              "idInDex": 1,
+              "implantsId": {
+                "implant1": {
+                  "implantId": 1
+                }
+              },
+              "nickname": "Shartear",
+              "status": ""
+            }
+          },
+          "wixInSafe_3": {
+            "attacksId": {
+              "attack1": {
+                "attackId": 1
+              }
+            },
+            "hp": 50,
+            "id": 3,
+            "idInDex": 4,
+            "implantsId": {
+              "implant1": {
+                "implantId": 1
+              }
+            },
+            "nickname": "Tongail",
+            "status": ""
+          }
+        }
+      }
+    }
+  },
+  "wixlings": {
+    "wix0": {
+      "abilityId": 0,
+      "baseStats": {
+        "attack": 0,
+        "defense": 0,
+        "hp": 0,
+        "spAttack": 0,
+        "spDefense": 0,
+        "speed": 0
+      },
+      "description": " ",
+      "essenceInside": 0,
+      "essenceToEvolve": 0,
+      "id": 0,
+      "mayAttackId": {
+        "line1": {
+          "attack1": {
+            "id": 0,
+            "busy": "true"
+          },
+          "attack2": {
+            "id": 0,
+            "busy": "true"
+          },
+          "attack3": {
+            "id": 0,
+            "busy": "true"
+          },
+          "attack4": {
+            "id": 0,
+            "busy": "true"
+          }
+        },
+        "line2": {
+          "attack1": {
+            "id": 0,
+            "busy": "true"
+          },
+          "attack2": {
+            "id": 0,
+            "busy": "true"
+          },
+          "attack3": {
+            "id": 0,
+            "busy": "true"
+          },
+          "attack4": {
+            "id": 0,
+            "busy": "true"
+          }
+        },
+        "line3": {
+          "attack1": {
+            "id": 0,
+            "busy": "true"
+          },
+          "attack2": {
+            "id": 0,
+            "busy": "true"
+          },
+          "attack3": {
+            "id": 0,
+            "busy": "true"
+          },
+          "attack4": {
+            "id": 0,
+            "busy": "true"
+          }
+        }
+      },
+      "name": " ",
+      "nextEvolutionId": 0,
+      "type1": " ",
+      "type2": " "
+    },
+    "wix1": {
+      "abilityId": 1,
+      "baseStats": {
+        "attack": 100,
+        "defense": 125,
+        "hp": 75,
+        "spAttack": 0,
+        "spDefense": 0,
+        "speed": 50
+      },
+      "description": " ",
+      "essenceInside": 50,
+      "essenceToEvolve": 1000,
+      "id": 1,
+      "mayAttackId": {
+        "line1": {
+          "attack1": {
+            "id": 1,
+            "stage": 1,
+            "busy": "true"
+          },
+          "attack2": {
+            "id": 2,
+            "stage": 2,
+            "busy": "true"
+          },
+          "attack3": {
+            "id": 3,
+            "stage": 3,
+            "busy": "true"
+          },
+          "attack4": {
+            "id": 0,
+            "busy": "false"
+          }
+        },
+        "line2": {
+          "attack1": {
+            "id": 4,
+            "stage": 1,
+            "busy": "true"
+          },
+          "attack2": {
+            "id": 5,
+            "stage": 2,
+            "busy": "true"
+          },
+          "attack3": {
+            "id": 6,
+            "stage": 3,
+            "busy": "true"
+          },
+          "attack4": {
+            "id": 0,
+            "busy": "false"
+          }
+        },
+        "line3": {
+          "attack1": {
+            "id": 7,
+            "stage": 1,
+            "busy": "true"
+          },
+          "attack2": {
+            "id": 0,
+            "busy": "false"
+          },
+          "attack3": {
+            "id": 8,
+            "stage": 3,
+            "busy": "true"
+          },
+          "attack4": {
+            "id": 9,
+            "stage": 3,
+            "busy": "true"
+          }
+        }
+      },
+      "name": "Shartear",
+      "nextEvolutionId": 2,
+      "price": 1200,
+      "stage": 1,
+      "type1": "water",
+      "type2": "toxic"
+    },
+    "wix10": {
+      "abilityId": 4,
+      "baseStats": {
+        "attack": 160,
+        "defense": 270,
+        "hp": 140,
+        "spAttack": 0,
+        "spDefense": 0,
+        "speed": 50
+      },
+      "description": " ",
+      "essenceInside": -10,
+      "essenceToEvolve": 0,
+      "id": 10,
+      "mayAttackId": {
+         "line1": {
+          "attack1": {
+            "id": 26,
+            "stage": 1,
+            "busy": "true"
+          },
+          "attack2": {
+            "id": 0,
+            "busy": "false"
+          },
+          "attack3": {
+            "id": 27,
+            "stage": 2,
+            "busy": "true"
+          },
+          "attack4": {
+            "id": 0,
+            "busy": "false"
+          }
+        },
+        "line2": {
+          "attack1": {
+            "id": 28,
+            "stage": 1,
+            "busy": "true"
+          },
+          "attack2": {
+            "id": 0,
+            "busy": "false"
+          },
+          "attack3": {
+            "id": 29,
+            "stage": 2,
+            "busy": "true"
+          },
+          "attack4": {
+            "id": 0,
+            "busy": "false"
+          }
+        },
+        "line3": {
+          "attack1": {
+            "id": 30,
+            "stage": 1,
+            "busy": "true"
+          },
+          "attack2": {
+            "id": 31,
+            "stage": 1,
+            "busy": "true"
+          },
+          "attack3": {
+            "id": 32,
+            "stage": 2,
+            "busy": "true"
+          },
+          "attack4": {
+            "id": 33,
+            "stage": 2,
+            "busy": "true"
+          }
+        }
+      },
+      "name": "Archarge",
+      "stage": 2,
+      "nextEvolutionId": -1,
+      "type1": "electric",
+      "type2": "none"
+    },
+    "wix11": {
+      "abilityId": 5,
+      "baseStats": {
+        "attack": 65,
+        "defense": 95,
+        "hp": 120,
+        "spAttack": 0,
+        "spDefense": 0,
+        "speed": 20
+      },
+      "description": " ",
+      "essenceInside": 50,
+      "essenceToEvolve": 1000,
+      "id": 11,
+      "stage": 1,
+      "mayAttackId": {
+         "line1": {
+          "attack1": {
+            "id": 34,
+            "stage": 1,
+            "busy": "true"
+          },
+          "attack2": {
+            "id": 35,
+            "stage": 2,
+            "busy": "true"
+          },
+          "attack3": {
+            "id": 36,
+            "stage": 3,
+            "busy": "true"
+          },
+          "attack4": {
+            "id": 37,
+            "stage": 3,
+            "busy": "true"
+          }
+        },
+        "line2": {
+          "attack1": {
+            "id": 0,
+            "busy": "false"
+          },
+          "attack2": {
+            "id": 38,
+            "stage": 2,
+            "busy": "true"
+          },
+          "attack3": {
+            "id": 39,
+            "stage": 3,
+            "busy": "true"
+          },
+          "attack4": {
+            "id": 40,
+            "stage": 3,
+            "busy": "true"
+          }
+        },
+        "line3": {
+          "attack1": {
+            "id": 41,
+            "stage": 1,
+            "busy": "true"
+          },
+          "attack2": {
+            "id": 42,
+            "stage": 2,
+            "busy": "true"
+          },
+          "attack3": {
+            "id": 0,
+            "busy": "false"
+          },
+          "attack4": {
+            "id": 0,
+            "busy": "false"
+          }
+        }
+      },
+      "name": "Kalgesid",
+      "nextEvolutionId": 12,
+      "price": 700,
+      "type1": "grass",
+      "type2": "none"
+    },
+    "wix12": {
+      "abilityId": 5,
+      "baseStats": {
+        "attack": 100,
+        "defense": 135,
+        "hp": 165,
+        "spAttack": 0,
+        "spDefense": 0,
+        "speed": 50
+      },
+      "description": " ",
+      "essenceInside": 100,
+      "essenceToEvolve": 2400,
+      "id": 12,
+     "mayAttackId": {
+         "line1": {
+          "attack1": {
+            "id": 34,
+            "stage": 1,
+            "busy": "true"
+          },
+          "attack2": {
+            "id": 35,
+            "stage": 2,
+            "busy": "true"
+          },
+          "attack3": {
+            "id": 36,
+            "stage": 3,
+            "busy": "true"
+          },
+          "attack4": {
+            "id": 37,
+            "stage": 3,
+            "busy": "true"
+          }
+        },
+        "line2": {
+          "attack1": {
+            "id": 0,
+            "busy": "false"
+          },
+          "attack2": {
+            "id": 38,
+            "stage": 2,
+            "busy": "true"
+          },
+          "attack3": {
+            "id": 39,
+            "stage": 3,
+            "busy": "true"
+          },
+          "attack4": {
+            "id": 40,
+            "stage": 3,
+            "busy": "true"
+          }
+        },
+        "line3": {
+          "attack1": {
+            "id": 41,
+            "stage": 1,
+            "busy": "true"
+          },
+          "attack2": {
+            "id": 42,
+            "stage": 2,
+            "busy": "true"
+          },
+          "attack3": {
+            "id": 0,
+            "busy": "false"
+          },
+          "attack4": {
+            "id": 0,
+            "busy": "false"
+          }
+        }
+      },
+      "name": "Kalganoot",
+      "stage": 2,
+      "nextEvolutionId": 13,
+      "type1": "grass",
+      "type2": "none"
+    },
+    "wix13": {
+      "abilityId": 5,
+      "baseStats": {
+        "attack": 135,
+        "defense": 170,
+        "hp": 245,
+        "spAttack": 0,
+        "spDefense": 0,
+        "speed": 80
+      },
+      "description": " ",
+      "essenceInside": 250,
+      "essenceToEvolve": 0,
+      "id": 13,
+      "mayAttackId": {
+         "line1": {
+          "attack1": {
+            "id": 34,
+            "stage": 1,
+            "busy": "true"
+          },
+          "attack2": {
+            "id": 35,
+            "stage": 2,
+            "busy": "true"
+          },
+          "attack3": {
+            "id": 36,
+            "stage": 3,
+            "busy": "true"
+          },
+          "attack4": {
+            "id": 37,
+            "stage": 3,
+            "busy": "true"
+          }
+        },
+        "line2": {
+          "attack1": {
+            "id": 0,
+            "busy": "false"
+          },
+          "attack2": {
+            "id": 38,
+            "stage": 2,
+            "busy": "true"
+          },
+          "attack3": {
+            "id": 39,
+            "stage": 3,
+            "busy": "true"
+          },
+          "attack4": {
+            "id": 40,
+            "stage": 3,
+            "busy": "true"
+          }
+        },
+        "line3": {
+          "attack1": {
+            "id": 41,
+            "stage": 1,
+            "busy": "true"
+          },
+          "attack2": {
+            "id": 42,
+            "stage": 2,
+            "busy": "true"
+          },
+          "attack3": {
+            "id": 0,
+            "busy": "false"
+          },
+          "attack4": {
+            "id": 0,
+            "busy": "false"
+          }
+        }
+      },
+      "name": "Kalganya",
+      "stage": 3,
+      "nextEvolutionId": -1,
+      "type1": "grass",
+      "type2": "none"
+    },
+    "wix2": {
+      "abilityId": 1,
+      "baseStats": {
+        "attack": 145,
+        "defense": 150,
+        "hp": 120,
+        "spAttack": 0,
+        "spDefense": 0,
+        "speed": 85
+      },
+      "description": " ",
+      "essenceInside": 100,
+      "essenceToEvolve": 2700,
+      "id": 2,
+      "mayAttackId": {
+         "line1": {
+          "attack1": {
+            "id": 1,
+            "stage": 1,
+            "busy": "true"
+          },
+          "attack2": {
+            "id": 2,
+            "stage": 2,
+            "busy": "true"
+          },
+          "attack3": {
+            "id": 3,
+            "stage": 3,
+            "busy": "true"
+          },
+          "attack4": {
+            "id": 0,
+            "busy": "false"
+          }
+        },
+        "line2": {
+          "attack1": {
+            "id": 4,
+            "stage": 1,
+            "busy": "true"
+          },
+          "attack2": {
+            "id": 5,
+            "stage": 2,
+            "busy": "true"
+          },
+          "attack3": {
+            "id": 6,
+            "stage": 3,
+            "busy": "true"
+          },
+          "attack4": {
+            "id": 0,
+            "busy": "false"
+          }
+        },
+        "line3": {
+          "attack1": {
+            "id": 7,
+            "stage": 1,
+            "busy": "true"
+          },
+          "attack2": {
+            "id": 0,
+            "busy": "false"
+          },
+          "attack3": {
+            "id": 8,
+            "stage": 3,
+            "busy": "true"
+          },
+          "attack4": {
+            "id": 9,
+            "stage": 3,
+            "busy": "true"
+          }
+        }
+      },
+      "stage": 2,
+      "name": "Sharpier",
+      "nextEvolutionId": 3,
+      "type1": "water",
+      "type2": "toxic"
+    },
+    "wix3": {
+      "abilityId": 1,
+      "baseStats": {
+        "attack": 210,
+        "defense": 180,
+        "hp": 160,
+        "spAttack": 0,
+        "spDefense": 0,
+        "speed": 150
+      },
+      "description": " ",
+      "essenceInside": 250,
+      "essenceToEvolve": -1,
+      "id": 3,
+      "mayAttackId": {
+         "line1": {
+          "attack1": {
+            "id": 1,
+            "stage": 1,
+            "busy": "true"
+          },
+          "attack2": {
+            "id": 2,
+            "stage": 2,
+            "busy": "true"
+          },
+          "attack3": {
+            "id": 3,
+            "stage": 3,
+            "busy": "true"
+          },
+          "attack4": {
+            "id": 0,
+            "busy": "false"
+          }
+        },
+        "line2": {
+          "attack1": {
+            "id": 4,
+            "stage": 1,
+            "busy": "true"
+          },
+          "attack2": {
+            "id": 5,
+            "stage": 2,
+            "busy": "true"
+          },
+          "attack3": {
+            "id": 6,
+            "stage": 3,
+            "busy": "true"
+          },
+          "attack4": {
+            "id": 0,
+            "busy": "false"
+          }
+        },
+        "line3": {
+          "attack1": {
+            "id": 7,
+            "stage": 1,
+            "busy": "true"
+          },
+          "attack2": {
+            "id": 0,
+            "busy": "false"
+          },
+          "attack3": {
+            "id": 8,
+            "stage": 3,
+            "busy": "true"
+          },
+          "attack4": {
+            "id": 9,
+            "stage": 3,
+            "busy": "true"
+          }
+        }
+      },
+      "name": "Sharhoon",
+      "stage": 3,
+      "nextEvolutionId": 0,
+      "type1": "water",
+      "type2": "toxic"
+    },
+    "wix4": {
+      "abilityId": 2,
+      "baseStats": {
+        "attack": 170,
+        "defense": 30,
+        "hp": 50,
+        "spAttack": 0,
+        "spDefense": 0,
+        "speed": 150
+      },
+      "description": " ",
+      "essenceInside": -10,
+      "essenceToEvolve": 1500,
+      "id": 4,
+      "mayAttackId": {
+         "line1": {
+          "attack1": {
+            "id": 0,
+            "stage": 1,
+            "busy": "true"
+          },
+          "attack2": {
+            "id": 0,
+            "busy": "false"
+          },
+          "attack3": {
+            "id": 10,
+            "stage": 2,
+            "busy": "true"
+          },
+          "attack4": {
+            "id": 0,
+            "busy": "false"
+          }
+        },
+        "line2": {
+          "attack1": {
+            "id": 2,
+            "stage": 1,
+            "busy": "true"
+          },
+          "attack2": {
+            "id": 11,
+            "stage": 1,
+            "busy": "true"
+          },
+          "attack3": {
+            "id": 12,
+            "stage": 2,
+            "busy": "true"
+          },
+          "attack4": {
+            "id": 0,
+            "busy": "false"
+          }
+        },
+        "line3": {
+          "attack1": {
+            "id": 13,
+            "stage": 1,
+            "busy": "true"
+          },
+          "attack2": {
+            "id": 0,
+            "busy": "false"
+          },
+          "attack3": {
+            "id": 14,
+            "stage": 2,
+            "busy": "true"
+          },
+          "attack4": {
+            "id": 15,
+            "stage": 2,
+            "busy": "true"
+          }
+        }
+      },
+      "name": "Tongail",
+      "nextEvolutionId": 5,
+      "price": 900,
+      "stage": 1,
+      "type1": "void",
+      "type2": "none"
+    },
+    "wix5": {
+      "abilityId": 2,
+      "baseStats": {
+        "attack": 220,
+        "defense": 65,
+        "hp": 115,
+        "spAttack": 0,
+        "spDefense": 0,
+        "speed": 200
+      },
+      "description": " ",
+      "essenceInside": -10,
+      "essenceToEvolve": 0,
+      "id": 5,
+       "mayAttackId": {
+         "line1": {
+          "attack1": {
+            "id": 0,
+            "stage": 1,
+            "busy": "true"
+          },
+          "attack2": {
+            "id": 0,
+            "busy": "false"
+          },
+          "attack3": {
+            "id": 10,
+            "stage": 2,
+            "busy": "true"
+          },
+          "attack4": {
+            "id": 0,
+            "busy": "false"
+          }
+        },
+        "line2": {
+          "attack1": {
+            "id": 2,
+            "stage": 1,
+            "busy": "true"
+          },
+          "attack2": {
+            "id": 11,
+            "stage": 1,
+            "busy": "true"
+          },
+          "attack3": {
+            "id": 12,
+            "stage": 2,
+            "busy": "true"
+          },
+          "attack4": {
+            "id": 0,
+            "busy": "false"
+          }
+        },
+        "line3": {
+          "attack1": {
+            "id": 13,
+            "stage": 1,
+            "busy": "true"
+          },
+          "attack2": {
+            "id": 0,
+            "busy": "false"
+          },
+          "attack3": {
+            "id": 14,
+            "stage": 2,
+            "busy": "true"
+          },
+          "attack4": {
+            "id": 15,
+            "stage": 2,
+            "busy": "true"
+          }
+        }
+      },
+      "name": "Fangound",
+      "stage":2,
+      "nextEvolutionId": -1,
+      "type1": "void",
+      "type2": "none"
+    },
+    "wix6": {
+      "abilityId": 3,
+      "baseStats": {
+        "attack": 75,
+        "defense": 85,
+        "hp": 80,
+        "spAttack": 0,
+        "spDefense": 0,
+        "speed": 50
+      },
+      "description": " ",
+      "essenceInside": 50,
+      "essenceToEvolve": 1000,
+      "id": 6,
+        "mayAttackId": {
+         "line1": {
+          "attack1": {
+            "id": 16,
+            "stage": 1,
+            "busy": "true"
+          },
+          "attack2": {
+            "id": 17,
+            "stage": 2,
+            "busy": "true"
+          },
+          "attack3": {
+            "id": 18,
+            "stage": 3,
+            "busy": "true"
+          },
+          "attack4": {
+            "id": 19,
+            "stage":3,
+            "busy": "true"
+          }
+        },
+        "line2": {
+          "attack1": {
+            "id": 20,
+            "stage": 1,
+            "busy": "true"
+          },
+          "attack2": {
+            "id": 21,
+            "stage": 2,
+            "busy": "true"
+          },
+          "attack3": {
+            "id": 0,
+            "busy": "false"
+          },
+          "attack4": {
+            "id": 0,
+            "busy": "false"
+          }
+        },
+        "line3": {
+          "attack1": {
+            "id": 22,
+            "stage": 1,
+            "busy": "true"
+          },
+          "attack2": {
+            "id": 23,
+            "stage": 2,
+            "busy": "true"
+          },
+          "attack3": {
+            "id": 24,
+            "stage": 3,
+            "busy": "true"
+          },
+          "attack4": {
+            "id": 25,
+            "stage": 3,
+            "busy": "true"
+          }
+        }
+      },
+      "name": "Mothaby",
+      "nextEvolutionId": 7,
+      "stage": 1,
+      "price": 600,
+      "type1": "fire",
+      "type2": "ancient"
+    },
+    "wix7": {
+      "abilityId": 3,
+      "baseStats": {
+        "attack": 95,
+        "defense": 115,
+        "hp": 130,
+        "spAttack": 0,
+        "spDefense": 0,
+        "speed": 70
+      },
+      "description": " ",
+      "essenceInside": 100,
+      "essenceToEvolve": 2400,
+      "id": 7,
+      "stage": 2,
+        "mayAttackId": {
+         "line1": {
+          "attack1": {
+            "id": 16,
+            "stage": 1,
+            "busy": "true"
+          },
+          "attack2": {
+            "id": 17,
+            "stage": 2,
+            "busy": "true"
+          },
+          "attack3": {
+            "id": 18,
+            "stage": 3,
+            "busy": "true"
+          },
+          "attack4": {
+            "id": 19,
+            "stage":3,
+            "busy": "true"
+          }
+        },
+        "line2": {
+          "attack1": {
+            "id": 20,
+            "stage": 1,
+            "busy": "true"
+          },
+          "attack2": {
+            "id": 21,
+            "stage": 2,
+            "busy": "true"
+          },
+          "attack3": {
+            "id": 0,
+            "busy": "false"
+          },
+          "attack4": {
+            "id": 0,
+            "busy": "false"
+          }
+        },
+        "line3": {
+          "attack1": {
+            "id": 22,
+            "stage": 1,
+            "busy": "true"
+          },
+          "attack2": {
+            "id": 23,
+            "stage": 2,
+            "busy": "true"
+          },
+          "attack3": {
+            "id": 24,
+            "stage": 3,
+            "busy": "true"
+          },
+          "attack4": {
+            "id": 25,
+            "stage": 3,
+            "busy": "true"
+          }
+        }
+      },
+      "name": "Mothaffy",
+      "nextEvolutionId": 8,
+      "type1": "fire",
+      "type2": "ancient"
+    },
+    "wix8": {
+      "abilityId": 3,
+      "baseStats": {
+        "attack": 180,
+        "defense": 205,
+        "hp": 210,
+        "spAttack": 0,
+        "spDefense": 0,
+        "speed": 105
+      },
+      "stage": 3,
+      "description": " ",
+      "essenceInside": -10,
+      "essenceToEvolve": 0,
+      "id": 8,
+        "mayAttackId": {
+         "line1": {
+          "attack1": {
+            "id": 16,
+            "stage": 1,
+            "busy": "true"
+          },
+          "attack2": {
+            "id": 17,
+            "stage": 2,
+            "busy": "true"
+          },
+          "attack3": {
+            "id": 18,
+            "stage": 3,
+            "busy": "true"
+          },
+          "attack4": {
+            "id": 19,
+            "stage":3,
+            "busy": "true"
+          }
+        },
+        "line2": {
+          "attack1": {
+            "id": 20,
+            "stage": 1,
+            "busy": "true"
+          },
+          "attack2": {
+            "id": 21,
+            "stage": 2,
+            "busy": "true"
+          },
+          "attack3": {
+            "id": 0,
+            "busy": "false"
+          },
+          "attack4": {
+            "id": 0,
+            "busy": "false"
+          }
+        },
+        "line3": {
+          "attack1": {
+            "id": 22,
+            "stage": 1,
+            "busy": "true"
+          },
+          "attack2": {
+            "id": 23,
+            "stage": 2,
+            "busy": "true"
+          },
+          "attack3": {
+            "id": 24,
+            "stage": 3,
+            "busy": "true"
+          },
+          "attack4": {
+            "id": 25,
+            "stage": 3,
+            "busy": "true"
+          }
+        }
+      },
+      "name": "Mothive",
+      "nextEvolutionId": -1,
+      "type1": "fire",
+      "type2": "ancient"
+    },
+    "wix9": {
+      "abilityId": 4,
+      "baseStats": {
+        "attack": 85,
+        "defense": 150,
+        "hp": 85,
+        "spAttack": 0,
+        "spDefense": 0,
+        "speed": 80
+      },
+      "description": " ",
+      "essenceInside": 100,
+      "essenceToEvolve": 1500,
+      "id": 9,
+      "mayAttackId": {
+         "line1": {
+          "attack1": {
+            "id": 26,
+            "stage": 1,
+            "busy": "true"
+          },
+          "attack2": {
+            "id": 0,
+            "busy": "false"
+          },
+          "attack3": {
+            "id": 27,
+            "stage": 2,
+            "busy": "true"
+          },
+          "attack4": {
+            "id": 0,
+            "busy": "false"
+          }
+        },
+        "line2": {
+          "attack1": {
+            "id": 28,
+            "stage": 1,
+            "busy": "true"
+          },
+          "attack2": {
+            "id": 0,
+            "busy": "false"
+          },
+          "attack3": {
+            "id": 29,
+            "stage": 2,
+            "busy": "true"
+          },
+          "attack4": {
+            "id": 0,
+            "busy": "false"
+          }
+        },
+        "line3": {
+          "attack1": {
+            "id": 30,
+            "stage": 1,
+            "busy": "true"
+          },
+          "attack2": {
+            "id": 31,
+            "stage": 1,
+            "busy": "true"
+          },
+          "attack3": {
+            "id": 32,
+            "stage": 2,
+            "busy": "true"
+          },
+          "attack4": {
+            "id": 33,
+            "stage": 2,
+            "busy": "true"
+          }
+        }
+      },
+      "stage": 1,
+      "name": "Armark",
+      "nextEvolutionId": 10,
+      "price": 600,
+      "type1": "electric",
+      "type2": "none"
+    }
+  }
+}

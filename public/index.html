@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+      <style>
+          html{
+              background-color: black;
+          }
+          #sfdf{
+              margin-left: 200px;
+              position: absolute;
+          }
+      </style>
+      <script>
+         console.image = function(url, size = 10) {
+          var image = new Image();
+          image.onload = function() {
+            var style = [
+              'font-size: 1px;',
+              'padding: ' + this.height/100*size + 'px ' + this.width/100*size + 'px;',
+              'background: url('+ url +') no-repeat;',
+              'background-size: contain;'
+             ].join(' ');
+             console.log('%c ', style);
+          };
+          image.src = url;
+        };
+         console.image('https://pibig.info/uploads/posts/2021-10/1635202851_14-pibig-info-p-menkhera-kayako-chan-anime-krasivo-15.jpg')
+      </script>
+    <link rel="icon" href="https://wheelock.one-name.net/wp-content/uploads/2019/09/cropped-letter-w-icon-png-8988.png">
+      <link rel="stylesheet" href="<%= BASE_URL %>css/main.css">
+    <title>Wixlings</title>
+  </head>
+  <body>
+    <noscript>
+      <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+    </noscript>
+<!--    <img id="sfdf" src="https://sun9-30.userapi.com/s/v1/if2/dv5QiDBN9mIEAWV9hpDz9RibtTnqiqrdlYVpvTHhby5SsA-jdwyw6KzT00O2bnFucfsA4te6ag9-LINI5_3gq4ct.jpg?size=498x1080&quality=95&type=album">-->
+    <div id="app"></div>
+    <!-- built files will be auto injected -->
+  </body>
+</html>

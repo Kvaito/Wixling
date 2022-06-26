@@ -1,0 +1,19 @@
+{
+  "opponent1": {
+    "id": 1,
+    "name": "BMO",
+    "moneyForWin": 250,
+    "rank": 1,
+    "team": {
+      "teamMember1": {
+        "DexId": 6,
+        "attacks": {
+          "attack1Id": 1,
+          "attack2Id": 1,
+          "attack3Id": 1,
+          "attackImplantId": 1
+        }
+      }
+    }
+  }
+}

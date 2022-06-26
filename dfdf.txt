@@ -1,0 +1,40 @@
+"wixlings": {
+    "wix0":{
+      "id": 0,
+      "name": " ",
+      "type1": " ",
+      "type2": " ",
+      "essenceInside": 0,
+      "baseStats": {
+        "hp": 0,
+        "attack": 0,
+        "sp.attack": 0,
+        "defense": 0,
+        "sp.defense": 0,
+        "speed": 0
+      },
+      "description": " ",
+      "abilityId": 0,
+      "mayAttackId": {
+        "attack1": {"attackId": 0},
+        "attack2": {"attackId": 1},
+        "attack3": {"attackId": 2}
+      },
+      "nextEvolutionId": 0,
+      "essenceToEvolve": 0
+    }
+  },
+  "allItems": {
+    "item0":
+    {
+      "id": 0,
+      "title": " ",
+      "description": " "
+    }
+  },
+  "allAbilities": {
+    "ability1": {
+      "id": 0,
+      "description": " "
+    }
+  }

@@ -1,0 +1,124 @@
+{
+  "item0": {
+    "description": " ",
+    "id": 0,
+    "title": "ErrorImplant",
+    "bonusDesc": "+10% glitchness",
+    "bonusType": "statBoost",
+    "statType": "attack",
+    "statBoostPercent": 10000
+  },
+  "item1": {
+    "bonusDesc": "+10% Atk",
+    "bonusType": "statBoost",
+    "statType": "attack",
+    "statBoostPercent": 10,
+    "description": "Sharp claw implant, that can even cut steel",
+    "id": 1,
+    "price": 1200,
+    "title": "Claw"
+  },
+  "item10": {
+    "bonusDesc": "+15% Def",
+    "bonusType": "statBoost",
+    "statType": "defense",
+    "statBoostPercent": 15,
+    "id": 10,
+    "price": 1420,
+    "title": "Subdermal Armor"
+  },
+  "item11": {
+    "bonusDesc": "+20 accuracy to moves",
+    "bonusType": "attackBoost",
+    "boostType": "accuracy",
+    "boostAmount": 20,
+    "id": 11,
+    "price": 1145,
+    "title": "Eye Accuracy"
+  },
+  "item12": {
+    "bonusDesc": "New Implant Attack",
+    "bonusType": "implantAttack",
+    "attackId": 20,
+    "id": 12,
+    "price": 1530,
+    "title": "Eye Laser"
+  },
+  "item2": {
+    "bonusDesc": "+10% Def",
+    "bonusType": "statBoost",
+    "statType": "defense",
+    "statBoostPercent": 10,
+    "description": "Titanium bone, that сan withstand a huge load",
+    "id": 2,
+    "price": 950,
+    "title": "CyberBone"
+  },
+  "item3": {
+    "bonusDesc": "+3% All stats",
+    "bonusType": "statBoost",
+    "statType": "allStats",
+    "statBoostPercent": 3,
+    "description": "A capsule with mechanites that will improve your vix. But it's pretty painful",
+    "id": 3,
+    "price": 150,
+    "title": "MK1"
+  },
+  "item4": {
+    "bonusDesc": "+5% All stats",
+    "bonusType": "statBoost",
+    "statType": "allStats",
+    "statBoostPercent": 5,
+    "description": "A capsule with mechanites that will improve your vix. But it's pretty painful",
+    "id": 4,
+    "price": 350,
+    "title": "MK2"
+  },
+  "item5": {
+    "bonusDesc": "+7% All stats",
+    "bonusType": "statBoost",
+    "statType": "allStats",
+    "statBoostPercent": 7,
+    "description": "A capsule with mechanites that will improve your vix. But it's pretty painful",
+    "id": 5,
+    "price": 700,
+    "title": "MK3"
+  },
+  "item6": {
+    "bonusDesc": "+10% Speed",
+    "bonusType": "statBoost",
+    "statType": "speed",
+    "statBoostPercent": 10,
+    "description": "An implant that replaces Vix's leg and allows you to cross any distances and heights faster",
+    "id": 6,
+    "price": 870,
+    "title": "Jumper"
+  },
+  "item7": {
+    "bonusDesc": "Poison Bite Attack",
+     "bonusType": "implantAttack",
+    "attackId": 2,
+    "description": "Hydraulic jaws with incommensurable bite force, and fangs contain poison",
+    "id": 7,
+    "price": 1520,
+    "title": "CyberJaw"
+  },
+  "item8": {
+    "bonusDesc": "+10% HP",
+    "bonusType": "statBoost",
+    "statType": "HP",
+    "statBoostPercent": 10,
+    "id": 8,
+    "price": 3500,
+    "title": "Cyber Heart"
+  },
+  "item9": {
+    "bonusDesc": "+5% crit.chance",
+    "bonusType": "platformChange",
+    "changeType": "critBuff",
+    "changeAmount": 5,
+    "id": 9,
+    "price": 1050,
+    "title": "EyeCrit"
+  }
+}

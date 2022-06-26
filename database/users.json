@@ -1,0 +1,34 @@
+{
+  "users": {
+    "user1": {
+      "id": "",
+      "nickname": "",
+      "look": "",
+      "inventory": {
+      },
+      "caughtWix": {
+      },
+      "team": {
+        "slot1": "",
+        "slot2": "",
+        "slot3": ""
+      }
+    },
+      "user2": {
+        "id": "",
+        "nickname": "",
+        "look": "",
+        "inventory": {
+        },
+        "caughtWix": {
+        },
+        "team": {
+          "slot1": "",
+          "slot2": "",
+          "slot3": ""
+        }
+      }
+    }
+  }
+
+
