@@ -2,7 +2,7 @@ import {Group} from "three";
 
 export interface GameObject {
     position:iThreePosition,
-    setPosition: (position: number) => void,
+    setPosition: (position: iThreePosition) => void,
     model:Group
     destroy:()=>void,
 }
