@@ -2,24 +2,26 @@ import {
     AmbientLight,
     BoxGeometry,
     Camera, Color,
-    GridHelper,
+    GridHelper, Group,
     Mesh,
     MeshBasicMaterial, OrthographicCamera,
     PerspectiveCamera, PlaneGeometry, PointLight, RepeatWrapping,
-    Scene, TextureLoader,
+    Scene, Texture, TextureLoader,
     WebGLRenderer
 } from "three";
 import {$} from "~/src/Engine/state";
 import {TransformControls} from 'three/examples/jsm/controls/TransformControls';
 import {cameraLookAt, cameraPosition} from "~/src/Constants/scene";
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
+import {Props2D} from "~/src/Engine/Environment/Props2D";
+import type {iThreePosition} from "~/src/Engine/GameObject";
+import {Chunk} from "~/src/Engine/Environment/Chunk";
 
 export class Engine {
     container: HTMLElement;
     public scene: Scene;
     camera: Camera;
     renderer: WebGLRenderer;
-    transformControls!:TransformControls;
     readonly grid: GridHelper;
     _perspCamera!: PerspectiveCamera;
     _ortoCamera!: OrthographicCamera;
@@ -31,16 +33,16 @@ export class Engine {
         console.log('Start engine')
         this.container = window.document.createElement('div');
         this.scene = new Scene();
-        this.grid = new GridHelper(50, 50, '#5b8fab', 'rgba(139,212,231,0.15)');
-        this.scene.add(this.grid);
+        this.grid = new GridHelper(50, 50, '#62a2c4', 'rgb(118,216,255)');
+        // this.scene.add(this.grid);
         this.camera = new PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
         this.renderer = new WebGLRenderer();
-        this.renderer.setClearColor(new Color('#FBFBFB'));
+        this.renderer.setClearColor(new Color('#3c4b5b'));
         this.renderer.setSize(window.innerWidth, window.innerHeight);
-        const light = new AmbientLight(0x404040, 20); // soft white light
+        const light = new AmbientLight('#44494f', 0); // soft white light
         this.scene.add(light);
-        const light2 = new PointLight(0xffffff, 10000, 1000);
-        light2.position.set(100, 100, 100);
+        // const light2 = new PointLight(0xffffff, 500, 1000);
+        // light2.position.set(100, 100, 100);
         this.renderer.setAnimationLoop(()=>{this.render()})
     }
 
@@ -48,18 +50,26 @@ export class Engine {
         this.renderer.render(this.scene, this.camera);
     }
 
+    addGameObjectToScene(object:Group){
+        this.scene.add(object);
+    }
+
     addGround(){
-        const planeGeometry = new PlaneGeometry(100, 100);
         const textureLoader = new TextureLoader();
         const groundTexture = textureLoader.load('/textures/ground.jpg');
         groundTexture.wrapS = RepeatWrapping; // Повтор по горизонтали
         groundTexture.wrapT = RepeatWrapping; // Повтор по вертикали
-        groundTexture.repeat.set(300, 300);
-        const planeMaterial = new MeshBasicMaterial({ map: groundTexture });
-        const plane = new Mesh(planeGeometry, planeMaterial);
-        plane.rotateX( -Math.PI/2);
-        plane.position.set(0,-0.001,0)
-        this.scene.add(plane);
+        groundTexture.repeat.set(100, 100);
+        const ground=new Chunk({
+            texture:groundTexture,
+            position: {x:0,y:0,z:0},
+            name:'Ground',
+            rotation:-Math.PI/2,
+            height:100,
+            width:100
+        })
+        this.addGameObjectToScene(ground.model);
+        ground.generateEnvironment()
     }
 
     setContainer(container: HTMLElement) {
