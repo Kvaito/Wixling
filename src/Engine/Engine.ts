@@ -21,7 +21,7 @@ import {Player} from "~/src/Engine/Entity/Player";
 export class Engine {
     container: HTMLElement;
     public scene: Scene;
-    camera: Camera;
+    camera: PerspectiveCamera;
     renderer: WebGLRenderer;
     readonly grid: GridHelper;
     _perspCamera!: PerspectiveCamera;
@@ -36,7 +36,7 @@ export class Engine {
         this.scene = new Scene();
         this.grid = new GridHelper(50, 50, '#62a2c4', 'rgb(118,216,255)');
         // this.scene.add(this.grid);
-        this.camera = new PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        this.camera = new PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 600);
         this.renderer = new WebGLRenderer();
         this.renderer.setClearColor(new Color('#3c4b5b'));
         this.renderer.setSize(window.innerWidth, window.innerHeight);
@@ -47,10 +47,20 @@ export class Engine {
         this.renderer.setAnimationLoop(() => {
             this.render()
         })
+        window.addEventListener('resize', () => {
+            this.resize();
+        });
     }
 
     render() {
         this.renderer.render(this.scene, this.camera);
+    }
+
+    resize() {
+        this.camera.aspect = this.container.offsetWidth /this.container?.offsetHeight;
+        this.camera.updateProjectionMatrix();
+        this.renderer.setSize(this.container.offsetWidth, this.container.offsetHeight);
+        this.render();
     }
 
     addGameObjectToScene(object: Group) {
@@ -94,7 +104,7 @@ export class Engine {
         $.player = new Player({
             textureUrl:'/entity/player/Wensy.png',
             position: {x:0,y:0,z:3},
-            height:1.75,
+            height:1.7,
             width:0.8,
         });
     }
