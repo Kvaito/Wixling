@@ -26,7 +26,7 @@ export class Player extends Entity {
 
     updatePlayer() {
         const cameraDirection = new Vector3();
-        $.engine.camera.getWorldDirection(cameraDirection);
+        $.engine.camera.camera.getWorldDirection(cameraDirection);
         const movement = new Vector3();
 
         if (this.keysPressed.w) {
@@ -48,8 +48,10 @@ export class Player extends Entity {
 
         // Нормализуем и масштабируем, если хотя бы одна клавиша нажата
         if (movement.length() > 0) {
-            movement.normalize().multiplyScalar(0.1); // Вы можете изменить скорость, изменив множитель
-            this.move(movement); // Двигаем игрока
+            movement.normalize().multiplyScalar(this.speed); // Вы можете изменить скорость, изменив множитель
+            this.move(movement);
         }
+
+        $.engine.camera.followPlayer();
     }
 }

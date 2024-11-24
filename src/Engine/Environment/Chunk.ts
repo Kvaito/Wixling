@@ -1,6 +1,6 @@
 import {Props2D} from "~/src/Engine/Environment/Props2D";
 import {SRGBColorSpace, Texture, TextureLoader} from "three";
-import {$} from "~/src/Engine/state.ts";
+import {$} from "~/src/Engine/state";
 
 export class Chunk extends Props2D {
     propsInside: Array<any> = []
@@ -27,13 +27,13 @@ export class Chunk extends Props2D {
                 isSprite:true,
                 width:1,
             })
-            props.model.renderOrder=1000-props.model.position.distanceTo($.engine.camera.position)
+            props.model.renderOrder=1000-props.model.position.distanceTo($.engine.camera.camera.position)
             this.propsInside.push(props)
         })
         this.propsInside.forEach(propsObject => {
             this.model.add(propsObject.model)
         })
-        console.log('Ground after generation',this.model)
+        // console.log('Ground after generation',this.model)
     }
 
 }

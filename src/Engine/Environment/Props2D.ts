@@ -1,6 +1,7 @@
 import {Group, Mesh, MeshBasicMaterial, PlaneGeometry, Sprite, SpriteMaterial, Texture} from "three";
 import type {Environment} from "~/src/Engine/Environment/Environment";
 import type {iThreePosition} from "~/src/Engine/GameObject";
+import {$} from "~/src/Engine/state";
 
 export type iProps2D = {
     texture: Texture;
@@ -40,7 +41,7 @@ export class Props2D implements Environment {
         if (propsModel) {
             propsModel.position.set(this.position.x, this.position.y, this.position.z);
             this.model.add(propsModel);
-            // this.model.renderOrder=propsModel.position.distanceTo($.engine.camera.position)
+            // this.model.renderOrder=1000-propsModel.position.distanceTo($.engine.camera.camera.position)
         } else console.error('PROPS ' + props.name + ' CAN NOT BE ADDED')
 
     }
@@ -49,9 +50,12 @@ export class Props2D implements Environment {
 
     }
 
-
-    setPosition(position: number): void {
+    setPosition(position: iThreePosition): void {
+        this.position = position;
     }
 
+    getPosition(): iThreePosition {
+        return this.position;
+    }
 
 }
