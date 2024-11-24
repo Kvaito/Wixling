@@ -7,7 +7,7 @@ export type iEntity = {
     position: iThreePosition,
     height: number,
     width: number,
-    name?:string,
+    name?: string,
 }
 
 export class Entity implements GameObject {
@@ -15,7 +15,7 @@ export class Entity implements GameObject {
     position: iThreePosition;
     height: number;
     width: number;
-    speed=0.1;
+    speed = 0.1;
     velocity = new Vector3(0, 0, 0);
 
     constructor(props: iEntity) {
@@ -31,7 +31,7 @@ export class Entity implements GameObject {
         this.setPosition(props.position);
         $.engine.addGameObjectToScene(this.model);
         this.model.renderOrder = 1000 - this.model.position.distanceTo($.engine.camera.camera.position);
-        this.model.name='Player'
+        if (props.name) this.model.name = props.name;
     }
 
     destroy(): void {

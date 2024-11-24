@@ -70,8 +70,7 @@ export class Engine {
             width: 100
         })
         this.addGameObjectToScene(ground.model);
-        ground.generateEnvironment();
-
+        $.ground = ground;
     }
 
     getObjectFromSceneByID(id: number) {
@@ -86,8 +85,16 @@ export class Engine {
         })
     }
 
-    recalcRenderOrderForEffects(){
+    recalcRenderOrderForEffects() {
         $.effects.forEach(props => {
+            const modelOnScene = this.getObjectFromSceneByID(props.model.id);
+            if (!modelOnScene) return;
+            modelOnScene.renderOrder = 1000 - modelOnScene.position.distanceTo($.engine.camera.camera.position)
+        })
+    }
+
+    recalcRenderOrderForEntities(){
+        $.entities.forEach(props => {
             const modelOnScene = this.getObjectFromSceneByID(props.model.id);
             if (!modelOnScene) return;
             modelOnScene.renderOrder = 1000 - modelOnScene.position.distanceTo($.engine.camera.camera.position)
@@ -109,9 +116,12 @@ export class Engine {
             position: {x: 0, y: 0, z: 0},
             height: 1.7,
             width: 0.8,
+            name:'Player'
         });
         $.player.eventListeners();
-        this.camera.followPlayer()
+        this.camera.followPlayer();
+        $.ground.generateEnvironment();
+        $.ground.createEntities();
         window.addEventListener('resize', () => {
             this.resize();
         });

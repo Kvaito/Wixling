@@ -1,9 +1,23 @@
 import {Props2D} from "~/src/Engine/Environment/Props2D";
 import {SRGBColorSpace, Texture, TextureLoader} from "three";
 import {$} from "~/src/Engine/state";
+import {Eol} from "~/src/Engine/Entity/Eol";
 
 export class Chunk extends Props2D {
     propsInside: Array<any> = []
+
+    createEntities() {
+        const entities = ['Eol', 'Eol'];
+        entities.forEach(entityName => {
+            $.addEntity(new Eol({
+                height: 2.2,
+                position: {x: 0, y: 0, z: 0},
+                textureUrl: "/entity/Eon.png",
+                width: 1.45,
+                name:'Eon'
+            }));
+        })
+    }
 
     generateEnvironment() {
         //Разместить пять одинаковых спрайтов
@@ -18,16 +32,16 @@ export class Chunk extends Props2D {
         const shardTexture = $.textureLoader.load('/environment/core_shard_1.png');
         shardTexture.colorSpace = SRGBColorSpace
         positions.forEach(position => {
-            const props=new Props2D({
+            const props = new Props2D({
                 texture: shardTexture,
                 position: position,
                 name: 'Shard',
                 rotation: 0,
-                height:1,
-                isSprite:true,
-                width:1,
+                height: 1,
+                isSprite: true,
+                width: 1,
             })
-            props.model.renderOrder=1000-props.model.position.distanceTo($.engine.camera.camera.position)
+            props.model.renderOrder = 1000 - props.model.position.distanceTo($.engine.camera.camera.position)
             this.propsInside.push(props)
             $.addEnvironments(props);
         })
