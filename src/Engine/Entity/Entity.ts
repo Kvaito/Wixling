@@ -1,6 +1,6 @@
 import type {GameObject, iThreePosition} from "~/src/Engine/GameObject";
 import {$} from "~/src/Engine/state";
-import {Group, Sprite, SpriteMaterial, SRGBColorSpace} from "three";
+import {Group, Sprite, SpriteMaterial, SRGBColorSpace, Vector3} from "three";
 
 export type iEntity={
     textureUrl:string,
@@ -14,6 +14,7 @@ export class Entity implements GameObject{
     position: iThreePosition;
     height:number;
     width:number;
+    velocity=new Vector3(0,0,0);
 
     constructor(props:iEntity){
         const playerTexture = $.textureLoader.load(props.textureUrl);
@@ -32,6 +33,13 @@ export class Entity implements GameObject{
     }
 
     destroy(): void {
+    }
+
+    move(direction:Vector3) {
+        direction.y=0;
+        this.velocity.add(direction);
+        this.model.position.add(this.velocity);
+        this.velocity.set(0, 0, 0); // Сбросить скорость после движения
     }
 
     setPosition(position: iThreePosition): void {

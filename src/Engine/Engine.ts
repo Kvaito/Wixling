@@ -103,6 +103,7 @@ export class Engine {
             height:1.7,
             width:0.8,
         });
+        $.player.eventListeners()
     }
 }
 
