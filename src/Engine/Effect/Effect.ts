@@ -29,6 +29,7 @@ export class Effect implements GameObject {
             const planeMaterial = new MeshBasicMaterial({map: effectTexture, transparent: true});
             propsModel = new Mesh(planeGeometry, planeMaterial);
             propsModel.rotateX(-Math.PI/2);
+            propsModel.rotateZ(props.rotation??0);
         }
         if (props.lifetime) {
             setTimeout(() => {
