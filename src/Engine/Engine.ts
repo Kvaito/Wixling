@@ -6,7 +6,7 @@ import {
     Mesh,
     MeshBasicMaterial, OrthographicCamera,
     PerspectiveCamera, PlaneGeometry, PointLight, RepeatWrapping,
-    Scene, SRGBColorSpace, Texture, TextureLoader,
+    Scene, SRGBColorSpace, Texture, TextureLoader, Vector3,
     WebGLRenderer
 } from "three";
 import {$} from "~/src/Engine/state";
@@ -25,9 +25,6 @@ export class Engine {
     renderer: WebGLRenderer;
     readonly grid: GridHelper;
     _perspCamera!: PerspectiveCamera;
-    _ortoCamera!: OrthographicCamera;
-    orbitOrtho!: OrbitControls;
-    orbitPersp!: OrbitControls;
     orbit!: OrbitControls;
 
     constructor() {
@@ -90,20 +87,19 @@ export class Engine {
         this.container = container;
         container.appendChild(this.renderer.domElement);
         const aspect = this.container.offsetWidth / this.container.offsetHeight;
-        this._perspCamera = new PerspectiveCamera(70, this.container.offsetWidth / this.renderer.domElement.offsetHeight, 0.1, 10000);
-        this._ortoCamera = new OrthographicCamera(10 * aspect / -2, 10 * aspect / 2, 10 / 2, 10 / -2, 0.01, 1000);
+        this._perspCamera = new PerspectiveCamera(70, this.container.offsetWidth / this.renderer.domElement.offsetHeight, 0.1, 600);
         this.camera = this._perspCamera;
         this.camera.position.set(...cameraPosition);
         this.camera.lookAt(...cameraLookAt);
         this.scene.add(this.camera);
-        this.orbitOrtho = new OrbitControls(this._ortoCamera, this.container);
-        this.orbitOrtho.enabled = false;
-        this.orbitPersp = new OrbitControls(this._perspCamera, this.container);
-        this.orbit = this.orbitPersp;
+        this.orbit = new OrbitControls(this._perspCamera, this.container);
+        this.orbit.target.set(cameraLookAt[0], cameraLookAt[1], cameraLookAt[2]);
+        this.orbit.update()
+        console.log(this.orbit)
         this.addGround();
         $.player = new Player({
             textureUrl:'/entity/player/Wensy.png',
-            position: {x:0,y:0,z:3},
+            position: {x:0,y:0,z:0},
             height:1.7,
             width:0.8,
         });
