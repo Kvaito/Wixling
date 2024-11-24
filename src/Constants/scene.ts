@@ -11,3 +11,5 @@ export const cameraPosition = [ 0,2,2 ] as const;
 export const cameraLookAt = [ 0,1.2,0 ] as const;
 
 export const radialSegments = 8;
+
+export const footPrintCooldown=100;

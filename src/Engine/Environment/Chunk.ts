@@ -29,6 +29,7 @@ export class Chunk extends Props2D {
             })
             props.model.renderOrder=1000-props.model.position.distanceTo($.engine.camera.camera.position)
             this.propsInside.push(props)
+            $.addEnvironments(props);
         })
         this.propsInside.forEach(propsObject => {
             this.model.add(propsObject.model)

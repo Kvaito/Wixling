@@ -7,6 +7,7 @@ export type iEntity = {
     position: iThreePosition,
     height: number,
     width: number,
+    name?:string,
 }
 
 export class Entity implements GameObject {
@@ -26,10 +27,11 @@ export class Entity implements GameObject {
         this.height = props.height;
         this.width = props.width;
         sprite.scale.set(props.width, props.height, 1);
-        this.model.renderOrder = 1000 - this.model.position.distanceTo($.engine.camera.camera.position);
         this.model.add(sprite);
         this.setPosition(props.position);
         $.engine.addGameObjectToScene(this.model);
+        this.model.renderOrder = 1000 - this.model.position.distanceTo($.engine.camera.camera.position);
+        this.model.name='Player'
     }
 
     destroy(): void {

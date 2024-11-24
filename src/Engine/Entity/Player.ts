@@ -1,6 +1,8 @@
 import {Entity} from "~/src/Engine/Entity/Entity";
 import {$} from "~/src/Engine/state";
 import {Vector3} from "three";
+import {Effect} from "~/src/Engine/Effect/Effect";
+import {footPrintCooldown} from "~/src/Constants/scene";
 
 
 export class Player extends Entity {
@@ -10,6 +12,8 @@ export class Player extends Entity {
         s: false,
         d: false
     }
+    isFootprintCooldown=false
+    footPrintCooldownTimer:any;
 
     eventListeners() {
         document.addEventListener('keydown', (event: KeyboardEvent) => {
@@ -21,6 +25,17 @@ export class Player extends Entity {
             if(!this.keysPressed.hasOwnProperty(event.key)) return;
             this.keysPressed[event.key] = false;
             this.updatePlayer()
+        });
+    }
+
+    makeFootPrint(){
+        new Effect({
+            textureName:'Footprint',
+            lifetime:5000,
+            width:0.4,
+            height:0.4,
+            isSprite:false,
+            position:this.position
         });
     }
 
@@ -48,10 +63,25 @@ export class Player extends Entity {
 
         // Нормализуем и масштабируем, если хотя бы одна клавиша нажата
         if (movement.length() > 0) {
-            movement.normalize().multiplyScalar(this.speed); // Вы можете изменить скорость, изменив множитель
+            movement.normalize().multiplyScalar(this.speed);
             this.move(movement);
+            if(!this.isFootprintCooldown){
+                this.makeFootPrint();
+                this.isFootprintCooldown=true;
+                this.setFootPrintCooldown();
+            }
         }
-
+        $.engine.recalcRenderOrderForEnvironment();
+        $.engine.recalcRenderOrderForEffects();
         $.engine.camera.followPlayer();
+    }
+
+    setFootPrintCooldown(){
+        if(!this.footPrintCooldownTimer){
+            this.footPrintCooldownTimer = setTimeout(()=>{
+                this.isFootprintCooldown=false
+                this.footPrintCooldownTimer=null;
+            },footPrintCooldown)
+        }
     }
 }

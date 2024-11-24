@@ -28,10 +28,8 @@ export class GameCamera {
     }
 
     followPlayer(){
-        //Получить позицию игрока
         const playerPosition=$.player.getPosition();
-        //Изменить позицию камеры и точку фокуса
-        this.setPosition({...playerPosition,y:playerPosition.y+0.75,z:playerPosition.z+3});
+        this.setPosition({...playerPosition,y:playerPosition.y+0.75,z:playerPosition.z+2.2});
         this.focusOn({...playerPosition});
     }
 }

@@ -1,4 +1,5 @@
-import {Color,
+import {
+    Color,
     GridHelper, Group,
     PerspectiveCamera, RepeatWrapping,
     Scene, SRGBColorSpace, TextureLoader,
@@ -8,12 +9,14 @@ import {$} from "~/src/Engine/state";
 import {Chunk} from "~/src/Engine/Environment/Chunk";
 import {Player} from "~/src/Engine/Entity/Player";
 import {GameCamera} from "~/src/Engine/camera";
+import {toKeyAlias} from "@babel/types";
+import uid = toKeyAlias.uid;
 
 export class Engine {
     container: HTMLElement;
     public scene: Scene;
     renderer: WebGLRenderer;
-    camera!:GameCamera
+    camera!: GameCamera
     readonly grid: GridHelper;
 
     constructor() {
@@ -31,12 +34,13 @@ export class Engine {
 
     }
 
+
     render() {
         this.renderer.render(this.scene, this.camera.camera);
     }
 
     resize() {
-        this.camera.camera.aspect = this.container.offsetWidth /this.container?.offsetHeight;
+        this.camera.camera.aspect = this.container.offsetWidth / this.container?.offsetHeight;
         this.camera.camera.updateProjectionMatrix();
         this.renderer.setSize(this.container.offsetWidth, this.container.offsetHeight);
         this.render();
@@ -44,6 +48,10 @@ export class Engine {
 
     addGameObjectToScene(object: Group) {
         this.scene.add(object);
+    }
+
+    deleteModelFromScene(model: Group) {
+        this.scene.remove(model);
     }
 
     addGround() {
@@ -66,21 +74,41 @@ export class Engine {
 
     }
 
+    getObjectFromSceneByID(id: number) {
+        return this.scene.getObjectById(id)
+    }
+
+    recalcRenderOrderForEnvironment() {
+        $.environments.forEach(props => {
+            const modelOnScene = this.getObjectFromSceneByID(props.model.id);
+            if (!modelOnScene) return;
+            modelOnScene.renderOrder = 1000 - modelOnScene.position.distanceTo($.engine.camera.camera.position)
+        })
+    }
+
+    recalcRenderOrderForEffects(){
+        $.effects.forEach(props => {
+            const modelOnScene = this.getObjectFromSceneByID(props.model.id);
+            if (!modelOnScene) return;
+            modelOnScene.renderOrder = 1000 - modelOnScene.position.distanceTo($.engine.camera.camera.position)
+        })
+    }
+
     setContainer(container: HTMLElement) {
         this.container = container;
         container.appendChild(this.renderer.domElement);
-        const perspCamera=new PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 600);
+        const perspCamera = new PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 600);
         this.camera = new GameCamera(perspCamera);
         this.scene.add(this.camera.camera);
-        this.camera.setPosition({x:0,y:1.7,z:2.5});
+        this.camera.setPosition({x: 0, y: 1.7, z: 2.5});
         this.camera.update()
         this.addGround();
 
         $.player = new Player({
-            textureUrl:'/entity/player/Wensy.png',
-            position: {x:0,y:0,z:0},
-            height:1.7,
-            width:0.8,
+            textureUrl: '/entity/player/Wensy.png',
+            position: {x: 0, y: 0, z: 0},
+            height: 1.7,
+            width: 0.8,
         });
         $.player.eventListeners();
         this.camera.followPlayer()

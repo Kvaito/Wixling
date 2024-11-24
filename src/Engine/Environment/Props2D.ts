@@ -39,9 +39,8 @@ export class Props2D implements Environment {
             this.position.y = this.position.y + props.height / 2;
         }
         if (propsModel) {
-            propsModel.position.set(this.position.x, this.position.y, this.position.z);
             this.model.add(propsModel);
-            // this.model.renderOrder=1000-propsModel.position.distanceTo($.engine.camera.camera.position)
+            this.model.position.set(this.position.x, this.position.y, this.position.z);
         } else console.error('PROPS ' + props.name + ' CAN NOT BE ADDED')
 
     }
