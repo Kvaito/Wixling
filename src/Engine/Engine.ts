@@ -92,9 +92,10 @@ export class Engine {
         this.orbit = this.orbitPersp;
         this.addGround();
         $.player = new Player({
-            position: {
-                x: 0, y: 1, z: 3
-            }
+            textureUrl:'/entity/player/Wensy.png',
+            position: {x:0,y:0,z:3},
+            height:1.75,
+            width:0.8,
         });
     }
 }

@@ -1,9 +1,6 @@
 import {Group, Mesh, MeshBasicMaterial, PlaneGeometry, Sprite, SpriteMaterial, Texture} from "three";
 import type {Environment} from "~/src/Engine/Environment/Environment";
-import {texture} from "three/src/nodes/accessors/TextureNode";
 import type {iThreePosition} from "~/src/Engine/GameObject";
-import {planeGeometry} from "~/src/Constants/scene";
-import {$} from "~/src/Engine/state.ts";
 
 export type iProps2D = {
     texture: Texture;
