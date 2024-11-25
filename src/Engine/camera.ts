@@ -29,7 +29,7 @@ export class GameCamera {
 
     followPlayer(){
         const playerPosition=$.player.getPosition();
-        this.setPosition({...playerPosition,y:playerPosition.y+0.75,z:playerPosition.z+2.2});
+        this.setPosition({...playerPosition,y:playerPosition.y+1.25,z:playerPosition.z+2.2});
         this.focusOn({...playerPosition});
     }
 }

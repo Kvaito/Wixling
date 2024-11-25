@@ -15,7 +15,8 @@ export class Entity implements GameObject {
     position: iThreePosition;
     height: number;
     width: number;
-    speed = 0.1;
+    speed:number=0.1;
+    isMoving = false;
     velocity = new Vector3(0, 0, 0);
 
     constructor(props: iEntity) {
@@ -24,6 +25,7 @@ export class Entity implements GameObject {
         playerTexture.colorSpace = SRGBColorSpace
         const material = new SpriteMaterial({map: playerTexture});
         const sprite = new Sprite(material);
+        sprite.center.set(0.5,0);
         this.height = props.height;
         this.width = props.width;
         sprite.scale.set(props.width, props.height, 1);
@@ -45,8 +47,38 @@ export class Entity implements GameObject {
         this.velocity.set(0, 0, 0); // Сбросить скорость после движения
     }
 
+    goTo(position:iThreePosition){
+        console.log('go from',this.position,'to',position)
+        const targetPosition=new Vector3(position.x,position.y,position.z);
+        if (this.isMoving) {
+            this.model.position.copy(this.model.position);
+            this.isMoving = false;
+        }
+
+        this.isMoving = true;
+        const startPosition = this.model.position.clone();
+        const distance = targetPosition.clone().sub(startPosition);
+        const totalDistance = distance.length();
+        const direction = distance.normalize();
+        let traveledDistance = 0;
+
+        const moveStep = () => {
+            if (traveledDistance < totalDistance) {
+                const step = Math.min(this.speed, totalDistance - traveledDistance);
+                this.model.position.add(direction.clone().multiplyScalar(step));
+                traveledDistance += step;
+                this.model.renderOrder = 1000 - this.model.position.distanceTo($.engine.camera.camera.position);
+                requestAnimationFrame(moveStep);
+            } else {
+                this.isMoving = false; // Устанавливаем флаг в false, когда движение завершено
+            }
+        };
+
+        moveStep();
+    }
+
     setPosition(position: iThreePosition): void {
-        this.model.position.set(position.x, position.y + this.height / 2, position.z);
+        this.model.position.set(position.x, position.y, position.z);
         this.position = {x: this.model.position.x, y: this.model.position.y, z: this.model.position.z};
     }
 
@@ -54,4 +86,15 @@ export class Entity implements GameObject {
         return this.position;
     }
 
+    // Генерируем случайное расстояние в пределах заданного диапазона радиусов
+    findRandomTargetPosition(minRadius: number,maxRadius:number) {
+        const angle = Math.random() * 2 * Math.PI;
+        const center=this.position;
+
+        const distance = Math.random() * (maxRadius - minRadius) + minRadius;
+        const x = center.x + Math.cos(angle) * distance;
+        const z = center.z + Math.sin(angle) * distance;
+
+        return {x:x, y:center.y, z:z};
+    }
 }

@@ -7,15 +7,24 @@ export class Chunk extends Props2D {
     propsInside: Array<any> = []
 
     createEntities() {
-        const entities = ['Eol', 'Eol'];
-        entities.forEach(entityName => {
-            $.addEntity(new Eol({
+        const entities = [{
+            name: 'Eol',
+            position: {x: 5, y: 0, z: -9},
+        },
+            {
+                name: 'Eol',
+                position: {x: -5, y: 0, z: 1},
+            }];
+        entities.forEach(entityData => {
+            const eol = new Eol({
                 height: 2.2,
-                position: {x: 0, y: 0, z: 0},
-                textureUrl: "/entity/Eon.png",
+                position: entityData.position,
+                textureUrl: "/entity/Eol.png",
                 width: 1.45,
-                name:'Eon'
-            }));
+                name: 'Eol'
+            })
+            $.addEntity(eol);
+            eol.startLife();
         })
     }
 
@@ -23,11 +32,11 @@ export class Chunk extends Props2D {
         //Разместить пять одинаковых спрайтов
         //В будущем где-нибудь хранить для каждого чанка его внутренние данные
         const positions = [
-            {x: -2, y: 0, z: -1},
-            {x: 2, y: 0, z: 2},
-            {x: -1, y: 0, z: 1},
-            {x: 1, y: 0, z: -1},
-            {x: -1, y: 0, z: -2.5},
+            {x: -5, y: 0, z: -1},
+            {x: 4, y: 0, z: 2},
+            {x: -1, y: 0, z: 3},
+            {x: 3, y: 0, z: -1.5},
+            {x: -1.2, y: 0, z: -2.5},
         ];
         const shardTexture = $.textureLoader.load('/environment/core_shard_1.png');
         shardTexture.colorSpace = SRGBColorSpace

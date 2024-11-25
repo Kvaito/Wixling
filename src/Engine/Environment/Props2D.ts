@@ -29,14 +29,12 @@ export class Props2D implements Environment {
         if (props.isSprite) {
             const material = new SpriteMaterial({map: props.texture});
             propsModel = new Sprite(material);
+            propsModel.center.set(0.5,0);
         } else {
             const planeGeometry = new PlaneGeometry(props.width, props.height);
             const planeMaterial = new MeshBasicMaterial({map: this.texture, transparent: true});
             propsModel = new Mesh(planeGeometry, planeMaterial);
             propsModel.rotateX(this.rotation);
-        }
-        if (this.rotation == 0) {
-            this.position.y = this.position.y + props.height / 2;
         }
         if (propsModel) {
             this.model.add(propsModel);

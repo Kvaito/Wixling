@@ -118,6 +118,7 @@ export class Engine {
             width: 0.8,
             name:'Player'
         });
+        $.addEntity($.player);
         $.player.eventListeners();
         this.camera.followPlayer();
         $.ground.generateEnvironment();
@@ -125,6 +126,8 @@ export class Engine {
         window.addEventListener('resize', () => {
             this.resize();
         });
+        console.log('Scene after setContainer',this.scene);
+        console.log('State of game',$);
     }
 }
 
