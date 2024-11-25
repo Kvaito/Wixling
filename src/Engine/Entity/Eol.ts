@@ -62,7 +62,7 @@ export class Eol extends Entity {
         // console.log('Eol memory',this.memory)
         //Видно лужицу? Идём прямо к ней!
         if(this.currentMode === 'focus') return;
-        const shard = this.memory.environment.find(props => props.model.name == 'Shard')
+        const shard = this.memory.environment.find(props => props.model.name == 'EssencePaddle')
         if (shard) {
             //Лужица прямо передо мной? Испарить!
             if(this.model.position.distanceTo(shard.model.position)<this.evaporationRadius){

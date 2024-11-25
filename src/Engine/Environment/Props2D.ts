@@ -56,8 +56,8 @@ export class Props2D implements Environment {
             }
             const planeMaterial = new MeshBasicMaterial({map: this.texture, transparent: true});
             propsModel = new Mesh(planeGeometry, planeMaterial);
-            propsModel.rotateX(this.rotation);
-
+            propsModel.rotateY(this.rotation);
+            propsModel.rotateX(-Math.PI/2)
         }
         if (propsModel) {
             this.model.add(propsModel);

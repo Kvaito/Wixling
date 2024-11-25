@@ -15,7 +15,7 @@ export class CoreShard extends Props2D{
             height: 1.5,
             name: "EssencePaddle",
             position: {...this.position,y:this.position.y+0.001},
-            rotation:-Math.PI / 2,
+            rotation:Math.random() * 2 * Math.PI,
             textureName: 'EssencePaddle',
             width: 1.5,
             zIndexBuff:-1

@@ -26,7 +26,7 @@ export class Chunk extends Props2D {
                 name: 'Eol'
             })
             $.addEntity(eol);
-            // eol.startLife();
+            eol.startLife();
         })
     }
 
