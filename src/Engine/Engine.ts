@@ -55,19 +55,17 @@ export class Engine {
     }
 
     addGround() {
-        const textureLoader = new TextureLoader();
-        const groundTexture = textureLoader.load('/textures/ground.jpg');
-        groundTexture.colorSpace = SRGBColorSpace
-        groundTexture.wrapS = RepeatWrapping; // Повтор по горизонтали
-        groundTexture.wrapT = RepeatWrapping; // Повтор по вертикали
-        groundTexture.repeat.set(100, 100);
         const ground = new Chunk({
-            texture: groundTexture,
+            textureName: 'ground',
             position: {x: 0, y: 0, z: 0},
             name: 'Ground',
             rotation: -Math.PI / 2,
             height: 100,
-            width: 100
+            width: 100,
+            wrapping:{
+                wrapS:100,
+                wrapT:100
+            }
         })
         this.addGameObjectToScene(ground.model);
         $.ground = ground;
@@ -81,7 +79,7 @@ export class Engine {
         $.environments.forEach(props => {
             const modelOnScene = this.getObjectFromSceneByID(props.model.id);
             if (!modelOnScene) return;
-            modelOnScene.renderOrder = 1000 - modelOnScene.position.distanceTo($.engine.camera.camera.position)
+            modelOnScene.renderOrder = 1000 - modelOnScene.position.distanceTo($.engine.camera.camera.position)+props.zIndexBuff;
         })
     }
 

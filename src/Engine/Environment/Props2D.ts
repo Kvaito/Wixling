@@ -1,40 +1,63 @@
-import {Group, Mesh, MeshBasicMaterial, PlaneGeometry, Sprite, SpriteMaterial, Texture} from "three";
+import {
+    Group,
+    Mesh,
+    MeshBasicMaterial,
+    PlaneGeometry,
+    RepeatWrapping,
+    Sprite,
+    SpriteMaterial,
+    SRGBColorSpace,
+    Texture
+} from "three";
 import type {Environment} from "~/src/Engine/Environment/Environment";
 import type {iThreePosition} from "~/src/Engine/GameObject";
 import {$} from "~/src/Engine/state";
 
 export type iProps2D = {
-    texture: Texture;
+    textureName: string;
     position: iThreePosition;
     name: string;
     rotation?: number;
     width: number;
     height: number;
     isSprite?: boolean,
+    wrapping?:{
+        wrapS:number,
+        wrapT:number,
+    },
+    zIndexBuff?:number,
 }
 
 export class Props2D implements Environment {
     rotation: number = 0;
     texture: Texture;
+    zIndexBuff:number
     position: iThreePosition;
     model = new Group();
 
     constructor(props: iProps2D) {
-        this.texture = props.texture;
+        this.texture = $.textureLoader.load('/environment/' + props.textureName + '.png');
+        this.texture.colorSpace = SRGBColorSpace
         this.position = props.position;
         if (props.rotation) this.rotation = props.rotation;
         this.model.name = props.name;
-
+        this.zIndexBuff=props.zIndexBuff??0;
         let propsModel;
         if (props.isSprite) {
-            const material = new SpriteMaterial({map: props.texture});
+            const material = new SpriteMaterial({map: this.texture});
             propsModel = new Sprite(material);
-            propsModel.center.set(0.5,0);
+            propsModel.center.set(0.5, 0);
         } else {
             const planeGeometry = new PlaneGeometry(props.width, props.height);
+            if(props.wrapping){
+                this.texture.wrapS = RepeatWrapping; // Повтор по горизонтали
+                this.texture.wrapT = RepeatWrapping; // Повтор по вертикали
+                this.texture.repeat.set(100, 100);
+            }
             const planeMaterial = new MeshBasicMaterial({map: this.texture, transparent: true});
             propsModel = new Mesh(planeGeometry, planeMaterial);
             propsModel.rotateX(this.rotation);
+
         }
         if (propsModel) {
             this.model.add(propsModel);

@@ -83,7 +83,7 @@ export class Player extends Entity {
         $.engine.recalcRenderOrderForEnvironment();
         $.engine.recalcRenderOrderForEffects();
         $.engine.recalcRenderOrderForEntities();
-        // $.engine.camera.followPlayer();
+        $.engine.camera.followPlayer();
     }
 
     setFootPrintCooldown() {

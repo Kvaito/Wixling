@@ -2,6 +2,7 @@ import {Props2D} from "~/src/Engine/Environment/Props2D";
 import {SRGBColorSpace, Texture, TextureLoader} from "three";
 import {$} from "~/src/Engine/state";
 import {Eol} from "~/src/Engine/Entity/Eol";
+import {CoreShard} from "~/src/Engine/Environment/CoreShard";
 
 export class Chunk extends Props2D {
     propsInside: Array<any> = []
@@ -10,11 +11,12 @@ export class Chunk extends Props2D {
         const entities = [{
             name: 'Eol',
             position: {x: 5, y: 0, z: -9},
-        },
+            },
             {
                 name: 'Eol',
                 position: {x: -5, y: 0, z: 1},
-            }];
+            }
+        ];
         entities.forEach(entityData => {
             const eol = new Eol({
                 height: 2.2,
@@ -24,7 +26,7 @@ export class Chunk extends Props2D {
                 name: 'Eol'
             })
             $.addEntity(eol);
-            eol.startLife();
+            // eol.startLife();
         })
     }
 
@@ -38,11 +40,9 @@ export class Chunk extends Props2D {
             {x: 3, y: 0, z: -1.5},
             {x: -1.2, y: 0, z: -2.5},
         ];
-        const shardTexture = $.textureLoader.load('/environment/core_shard_1.png');
-        shardTexture.colorSpace = SRGBColorSpace
-        positions.forEach(position => {
-            const props = new Props2D({
-                texture: shardTexture,
+        positions.forEach((position,index) => {
+            const props = new CoreShard({
+                textureName: 'core_shard_1',
                 position: position,
                 name: 'Shard',
                 rotation: 0,
@@ -53,6 +53,7 @@ export class Chunk extends Props2D {
             props.model.renderOrder = 1000 - props.model.position.distanceTo($.engine.camera.camera.position)
             this.propsInside.push(props)
             $.addEnvironments(props);
+            if([3,4].includes(index)) props.update();
         })
         this.propsInside.forEach(propsObject => {
             this.model.add(propsObject.model)

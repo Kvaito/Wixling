@@ -48,7 +48,6 @@ export class Entity implements GameObject {
     }
 
     goTo(position:iThreePosition){
-        console.log('go from',this.position,'to',position)
         const targetPosition=new Vector3(position.x,position.y,position.z);
         if (this.isMoving) {
             this.model.position.copy(this.model.position);
@@ -70,7 +69,7 @@ export class Entity implements GameObject {
                 this.model.renderOrder = 1000 - this.model.position.distanceTo($.engine.camera.camera.position);
                 requestAnimationFrame(moveStep);
             } else {
-                this.isMoving = false; // Устанавливаем флаг в false, когда движение завершено
+                this.isMoving = false;
             }
         };
 
