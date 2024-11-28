@@ -12,10 +12,10 @@ export class Chunk extends Props2D {
             name: 'Eol',
             position: {x: 5, y: 0, z: -9},
             },
-            {
-                name: 'Eol',
-                position: {x: -5, y: 0, z: 1},
-            }
+            // {
+            //     name: 'Eol',
+            //     position: {x: -5, y: 0, z: 1},
+            // }
         ];
         entities.forEach(entityData => {
             const eol = new Eol({
