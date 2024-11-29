@@ -12,9 +12,8 @@ import {
 import type {Environment} from "~/src/Engine/Environment/Environment";
 import type {iThreePosition} from "~/src/Engine/GameObject";
 import {$} from "~/src/Engine/state";
-import {
-    Plane,Body,Cylinder
-} from 'cannon-es'
+import {chunkSize} from "~/src/Constants/gameConstants";
+
 export type iProps2D = {
     textureName: string;
     position: iThreePosition;
@@ -35,7 +34,6 @@ export class Props2D implements Environment {
     texture: Texture;
     zIndexBuff:number
     position: iThreePosition;
-    hitbox=new Body({mass:0});
     model = new Group();
 
     constructor(props: iProps2D) {
@@ -50,40 +48,23 @@ export class Props2D implements Environment {
             const material = new SpriteMaterial({map: this.texture});
             propsModel = new Sprite(material);
             propsModel.center.set(0.5, 0);
-            const cylShape = new Cylinder()
-            this.hitbox.addShape(cylShape);
         } else {
             const planeGeometry = new PlaneGeometry(props.width, props.height);
-            if(props.wrapping){
-                this.texture.wrapS = RepeatWrapping; // Повтор по горизонтали
-                this.texture.wrapT = RepeatWrapping; // Повтор по вертикали
-                this.texture.repeat.set(100, 100);
-            }
             const planeMaterial = new MeshBasicMaterial({map: this.texture, transparent: true});
             propsModel = new Mesh(planeGeometry, planeMaterial);
             propsModel.rotateY(this.rotation);
-            propsModel.rotateX(-Math.PI/2);
-            const planeShape = new Plane()
-            this.hitbox.addShape(planeShape);
-            this.hitbox.quaternion.setFromEuler(-Math.PI / 2, 0, 0);
+            propsModel.rotateX(-Math.PI/2)
         }
         if (propsModel) {
             this.model.add(propsModel);
-            $.engine.addBodyToGravityWorld(this.hitbox)
-            this.hitbox.position.set(this.position.x, this.position.y, this.position.z);
-            this.syncWithHitbox();
+            this.model.position.set(this.position.x, this.position.y, this.position.z);
+            $.engine.addGameObjectToScene(this.model);
         } else console.error('PROPS ' + props.name + ' CAN NOT BE ADDED')
 
     }
 
     destroy(): void {
 
-    }
-
-    syncWithHitbox(){
-        const hitboxPos=this.hitbox.position;
-        this.model.position.set(hitboxPos.x, hitboxPos.y, hitboxPos.z);
-        this.position={x:hitboxPos.x,y:hitboxPos.y,z:hitboxPos.z}
     }
 
     setPosition(position: iThreePosition): void {

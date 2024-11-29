@@ -9,10 +9,10 @@ import {$} from "~/src/Engine/state";
 import {Chunk} from "~/src/Engine/Environment/Chunk";
 import {Player} from "~/src/Engine/Entity/Player";
 import {GameCamera} from "~/src/Engine/camera";
-import {
-    World,Body
-} from 'cannon-es'
-import CannonDebugger from "cannon-es-debugger";
+import {toKeyAlias} from "@babel/types";
+import uid = toKeyAlias.uid;
+import {worldData} from "~/src/Constants/WorldData";
+import {chunkSize} from "~/src/Constants/gameConstants";
 
 export class Engine {
     container: HTMLElement;
@@ -20,16 +20,13 @@ export class Engine {
     renderer: WebGLRenderer;
     camera!: GameCamera
     readonly grid: GridHelper;
-    gravityWorld = new World();
-    cannonDebugger!:any;
 
     constructor() {
         console.log('Start engine')
         this.container = window.document.createElement('div');
         this.scene = new Scene();
         this.grid = new GridHelper(50, 50, '#62a2c4', 'rgb(118,216,255)');
-        console.log('Gravity world', this.gravityWorld);
-        this.gravityWorld.gravity.set(0, -2, 0);
+
         this.renderer = new WebGLRenderer();
         this.renderer.setClearColor(new Color('#3c4b5b'));
         this.renderer.setSize(window.innerWidth, window.innerHeight);
@@ -42,8 +39,6 @@ export class Engine {
 
     render() {
         this.renderer.render(this.scene, this.camera.camera);
-        this.gravityWorld.fixedStep();
-        if(this.cannonDebugger) this.cannonDebugger.update();
     }
 
     resize() {
@@ -57,29 +52,14 @@ export class Engine {
         this.scene.add(object);
     }
 
-    addBodyToGravityWorld(body:Body){
-        this.gravityWorld.addBody(body);
-    }
-
     deleteModelFromScene(model: Group) {
         this.scene.remove(model);
     }
 
     addGround() {
-        const ground = new Chunk({
-            textureName: 'ground',
-            position: {x: 0, y: 0, z: 0},
-            name: 'Ground',
-            rotation: -Math.PI / 2,
-            height: 100,
-            width: 100,
-            wrapping: {
-                wrapS: 100,
-                wrapT: 100
-            }
+        worldData.forEach(chunkData=>{
+            const chunk=new Chunk(chunkData)
         })
-        this.addGameObjectToScene(ground.model);
-        $.ground = ground;
     }
 
     getObjectFromSceneByID(id: number) {
@@ -90,7 +70,7 @@ export class Engine {
         $.environments.forEach(props => {
             const modelOnScene = this.getObjectFromSceneByID(props.model.id);
             if (!modelOnScene) return;
-            modelOnScene.renderOrder = 1000 - modelOnScene.position.distanceTo($.engine.camera.camera.position) + props.zIndexBuff;
+            modelOnScene.renderOrder = 1000 - modelOnScene.position.distanceTo($.engine.camera.camera.position)+props.zIndexBuff;
         })
     }
 
@@ -102,7 +82,7 @@ export class Engine {
         })
     }
 
-    recalcRenderOrderForEntities() {
+    recalcRenderOrderForEntities(){
         $.entities.forEach(props => {
             const modelOnScene = this.getObjectFromSceneByID(props.model.id);
             if (!modelOnScene) return;
@@ -125,20 +105,16 @@ export class Engine {
             position: {x: 0, y: 0, z: 0},
             height: 1.7,
             width: 0.8,
-            name: 'Player'
+            name:'Player'
         });
         $.addEntity($.player);
         $.player.eventListeners();
         this.camera.followPlayer();
-        // $.ground.generateEnvironment();
-        $.ground.createEntities();
-        $.engine.recalcRenderOrderForEnvironment();
         window.addEventListener('resize', () => {
             this.resize();
         });
-        console.log('Scene after setContainer', this.scene);
-        console.log('State of game', $);
-        this.cannonDebugger=new CannonDebugger(this.scene,this.gravityWorld,{});
+        console.log('Scene after setContainer',this.scene);
+        console.log('State of game',$);
     }
 }
 
