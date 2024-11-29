@@ -2,6 +2,7 @@ import {Entity} from "~/src/Engine/Entity/Entity";
 import {$} from "~/src/Engine/state";
 import {Props2D} from "~/src/Engine/Environment/Props2D";
 import {Group} from "three";
+import {findRandomTargetPosition} from "~/src/libs/findRandomTargetPosition";
 
 type iEolModes = 'sleep' | 'follow' | 'seek' | 'focus'
 
@@ -72,7 +73,7 @@ export class Eol extends Entity {
             this.goTo(shardPosition);
         } else {
             //Нет лужицы?.. Продолжаем поиски :(
-            this.goTo(this.findRandomTargetPosition(2,5));
+            this.goTo(findRandomTargetPosition(this.position, 2,5));
         }
     }
 
