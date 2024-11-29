@@ -8,6 +8,7 @@ export type iEntity = {
     height: number,
     width: number,
     name?: string,
+    floatY?:number,
 }
 
 export class Entity implements GameObject {
@@ -16,6 +17,7 @@ export class Entity implements GameObject {
     height: number;
     width: number;
     speed:number=0.1;
+    floatY:number;
     isMoving = false;
     velocity = new Vector3(0, 0, 0);
 
@@ -30,6 +32,7 @@ export class Entity implements GameObject {
         this.width = props.width;
         sprite.scale.set(props.width, props.height, 1);
         this.model.add(sprite);
+        this.floatY=props.floatY??0;
         this.setPosition(props.position);
         $.engine.addGameObjectToScene(this.model);
         this.model.renderOrder = 1000 - this.model.position.distanceTo($.engine.camera.camera.position);
@@ -77,7 +80,7 @@ export class Entity implements GameObject {
     }
 
     setPosition(position: iThreePosition): void {
-        this.model.position.set(position.x, position.y, position.z);
+        this.model.position.set(position.x, position.y+this.floatY, position.z);
         this.position = {x: this.model.position.x, y: this.model.position.y, z: this.model.position.z};
     }
 

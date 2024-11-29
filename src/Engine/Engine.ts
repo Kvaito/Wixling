@@ -102,7 +102,7 @@ export class Engine {
 
         $.player = new Player({
             textureUrl: '/entity/player/Wensy.png',
-            position: {x: 0, y: 0, z: 0},
+            position: {x: 5, y: 0, z: 3},
             height: 1.7,
             width: 0.8,
             name:'Player'

@@ -15,6 +15,9 @@ import {CoreShard} from "~/src/Engine/Environment/CoreShard";
 import type {iChunkData, iChunkEntityData, iChunkPropsData} from "~/src/Constants/WorldData";
 import type {iThreePosition} from "~/src/Engine/GameObject";
 import {chunkSize} from "~/src/Constants/gameConstants";
+import {getBiomeData} from "~/src/Constants/biomes";
+import {getWixDataById} from "~/src/Constants/wixes";
+import {Liquice} from "~/src/Engine/Entity/Liquice";
 
 export class Chunk {
     propsInside: Array<any> = []
@@ -29,8 +32,9 @@ export class Chunk {
         this.entities=props.entities;
         this.props=props.props;
         this.biome_id=props.biome_id;
+        const biomeData=getBiomeData(this.biome_id);
         this.position={x:props.position.x*chunkSize,y:0,z:props.position.z*chunkSize}
-        const texture=$.textureLoader.load('/environment/ground.png');
+        const texture=$.textureLoader.load(biomeData.groundTexture);
         texture.colorSpace = SRGBColorSpace
         texture.wrapS = RepeatWrapping; // Повтор по горизонтали
         texture.wrapT = RepeatWrapping; // Повтор по вертикали
@@ -55,13 +59,27 @@ export class Chunk {
 
     createEntities(entitiesData:Array<iChunkEntityData>) {
         entitiesData.forEach(entityData=>{
-            const entity=new Eol({
-                height: 2.2,
-                position: this.getGlobalPos(entityData.position),
-                textureUrl: "/entity/Eol.png",
-                width: 1.45,
-                name: 'Eol'
-            })
+            const wixData=getWixDataById(entityData.entity_id)
+            let entity;
+            const wixProps={
+                height: wixData.height,
+                position:this.getGlobalPos({...entityData.position}),
+                textureUrl: "/entity/"+wixData.name+".png",
+                width: wixData.width,
+                name: wixData.name,
+                floatY:wixData.floatY
+            }
+            switch (wixData.name){
+                case 'Eol':
+                    entity=new Eol(wixProps);
+                    entity.decide=entity.decideFunction;
+                    break;
+                case 'Liquice':
+                    entity=new Liquice(wixProps);
+                    break;
+                default:
+                    entity=new Eol(wixProps);
+            }
             $.addEntity(entity);
             entity.startLife();
         })
@@ -86,6 +104,7 @@ export class Chunk {
             $.addEnvironments(props);
         })
         this.propsInside.forEach(propsObject => {
+            propsObject.model.renderOrder = 1000 - propsObject.model.position.distanceTo($.engine.camera.camera.position);
             this.chunkGroup.add(propsObject.model)
         })
     }
