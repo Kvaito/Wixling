@@ -38,7 +38,7 @@ export class Chunk {
         texture.colorSpace = SRGBColorSpace
         texture.wrapS = RepeatWrapping; // Повтор по горизонтали
         texture.wrapT = RepeatWrapping; // Повтор по вертикали
-        texture.repeat.set(chunkSize, chunkSize);
+        texture.repeat.set(biomeData.groundWrapping, biomeData.groundWrapping);
         const planeGeometry = new PlaneGeometry(chunkSize, chunkSize);
         const planeMaterial = new MeshBasicMaterial({map: texture, transparent: true});
         const groundModel = new Mesh(planeGeometry, planeMaterial);
