@@ -18,6 +18,7 @@ import {chunkSize} from "~/src/Constants/gameConstants";
 import {getBiomeData} from "~/src/Constants/biomes";
 import {getWixDataById} from "~/src/Constants/wixes";
 import {Liquice} from "~/src/Engine/Entity/Liquice";
+import {getEnvironmentById} from "~/src/Constants/environments";
 
 export class Chunk {
     propsInside: Array<any> = []
@@ -91,15 +92,29 @@ export class Chunk {
 
     generateEnvironment(propsData:Array<iChunkPropsData>) {
         propsData.forEach((propsData,index) => {
-            const props = new CoreShard({
-                textureName: 'core_shard_1',
-                position: {...propsData.position,y:0},
-                name: 'Shard',
+            const envirData=getEnvironmentById(propsData.props_id);
+            //hehe
+            const propsProps = {
+                textureName: envirData.textureUrl,
+                position: {...propsData.position, y: 0},
+                name: envirData.name,
                 rotation: 0,
-                height: 1,
+                height: envirData.height,
                 isSprite: true,
-                width: 1,
-            })
+                width: envirData.width,
+            }
+            let props;
+            switch (envirData.name){
+                case 'core_shard_1':
+                    props=new CoreShard(propsProps);
+                    if(index==1) props.update()
+                    break;
+                case 'crystal_geyser_1':
+                    props=new Props2D(propsProps);
+                    break;
+                default:
+                    props=new CoreShard(propsProps);
+            }
             this.propsInside.push(props)
             $.addEnvironments(props);
         })

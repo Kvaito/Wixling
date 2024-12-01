@@ -120,13 +120,9 @@ export const worldData: Array<iChunkData> = [
         ],
         props: [
             {
-                props_id: 1,
-                position: { x: 1, z: 3 }
+                props_id: 2,
+                position: { x: 3, z: 3 }
             },
-            {
-                props_id: 1,
-                position: { x: 2, z: 7 }
-            }
         ],
         items: [],
     },
@@ -142,7 +138,7 @@ export const worldData: Array<iChunkData> = [
                 position: { x: 1, z: 3 }
             },
             {
-                props_id: 1,
+                props_id: 2,
                 position: { x: 2, z: 7 }
             }
         ],

@@ -37,7 +37,7 @@ export class Props2D implements Environment {
     model = new Group();
 
     constructor(props: iProps2D) {
-        this.texture = $.textureLoader.load('/environment/' + props.textureName + '.png');
+        this.texture = $.textureLoader.load('/environment/' + props.textureName);
         this.texture.colorSpace = SRGBColorSpace
         this.position = props.position;
         if (props.rotation) this.rotation = props.rotation;
@@ -47,6 +47,7 @@ export class Props2D implements Environment {
         if (props.isSprite) {
             const material = new SpriteMaterial({map: this.texture});
             propsModel = new Sprite(material);
+            propsModel.scale.set(props.width, props.height,1 );
             propsModel.center.set(0.5, 0);
         } else {
             const planeGeometry = new PlaneGeometry(props.width, props.height);

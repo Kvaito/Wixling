@@ -1,7 +1,3 @@
-import {Entity} from "~/src/Engine/Entity/Entity";
-import {$} from "~/src/Engine/state";
-import {Props2D} from "~/src/Engine/Environment/Props2D";
-import {Group} from "three";
 import {findRandomTargetPosition} from "~/src/libs/findRandomTargetPosition";
 import {Wix} from "~/src/Engine/Entity/Wix";
 
