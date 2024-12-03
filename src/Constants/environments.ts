@@ -12,6 +12,13 @@ export const environments = [
         height:3,
         width:2,
         textureUrl:'crystal_geyser_1.png',
+    },
+    {
+        id:3,
+        name:'crystal_core_shard_1',
+        height:1.5,
+        width:2,
+        textureUrl:'crystal_core_shard_1.png',
     }
 ]
 
