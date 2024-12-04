@@ -18,6 +18,7 @@ export class Player extends Entity {
     movement: Vector3 = new Vector3();
 
     eventListeners() {
+        console.log('listeners activated')
         document.addEventListener('keydown', (event: KeyboardEvent) => {
             if (!this.keysPressed.hasOwnProperty(event.key)) return;
             this.keysPressed[event.key] = true;

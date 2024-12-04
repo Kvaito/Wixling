@@ -72,6 +72,7 @@ export class Engine {
             if (!modelOnScene) return;
             modelOnScene.renderOrder = 1000 - modelOnScene.position.distanceTo($.engine.camera.camera.position)+props.zIndexBuff;
         })
+
     }
 
     recalcRenderOrderForEffects() {

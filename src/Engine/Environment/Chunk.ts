@@ -22,20 +22,20 @@ import {getEnvironmentById} from "~/src/Constants/environments";
 
 export class Chunk {
     propsInside: Array<any> = []
-    chunkGroup=new Group();
-    position:iThreePosition;
-    biome_id=0
-    entities: Array<iChunkEntityData>=[]
-    props: Array<iChunkPropsData>=[]
-    items: Array<any>=[]
+    chunkGroup = new Group();
+    position: iThreePosition;
+    biome_id = 0
+    entities: Array<iChunkEntityData> = []
+    props: Array<iChunkPropsData> = []
+    items: Array<any> = []
 
-    constructor(props:iChunkData) {
-        this.entities=props.entities;
-        this.props=props.props;
-        this.biome_id=props.biome_id;
-        const biomeData=getBiomeData(this.biome_id);
-        this.position={x:props.position.x*chunkSize,y:0,z:props.position.z*chunkSize}
-        const texture=$.textureLoader.load(biomeData.groundTexture);
+    constructor(props: iChunkData) {
+        this.entities = props.entities;
+        this.props = props.props;
+        this.biome_id = props.biome_id;
+        const biomeData = getBiomeData(this.biome_id);
+        this.position = {x: props.position.x * chunkSize, y: 0, z: props.position.z * chunkSize}
+        const texture = $.textureLoader.load(biomeData.groundTexture);
         texture.colorSpace = SRGBColorSpace
         texture.wrapS = RepeatWrapping; // Повтор по горизонтали
         texture.wrapT = RepeatWrapping; // Повтор по вертикали
@@ -43,60 +43,60 @@ export class Chunk {
         const planeGeometry = new PlaneGeometry(chunkSize, chunkSize);
         const planeMaterial = new MeshBasicMaterial({map: texture, transparent: true});
         const groundModel = new Mesh(planeGeometry, planeMaterial);
-        groundModel.rotateX(-Math.PI/2);
-        groundModel.name='Ground'
-        groundModel.position.set(chunkSize/2,0, chunkSize/2);
+        groundModel.rotateX(-Math.PI / 2);
+        groundModel.name = 'Ground'
+        groundModel.position.set(chunkSize / 2, 0, chunkSize / 2);
         this.chunkGroup.position.set(this.position.x, this.position.y, this.position.z);
         this.chunkGroup.add(groundModel);
-        this.chunkGroup.name='Chunk group'
+        this.chunkGroup.name = 'Chunk group'
         this.initializeChunk();
         $.engine.addGameObjectToScene(this.chunkGroup);
     }
 
-    initializeChunk(){
+    initializeChunk() {
         this.createEntities(this.entities);
         this.generateEnvironment(this.props);
     }
 
-    createEntities(entitiesData:Array<iChunkEntityData>) {
-        entitiesData.forEach(entityData=>{
-            const wixData=getWixDataById(entityData.entity_id)
+    createEntities(entitiesData: Array<iChunkEntityData>) {
+        entitiesData.forEach(entityData => {
+            const wixData = getWixDataById(entityData.entity_id)
             let entity;
-            const wixProps={
+            const wixProps = {
                 height: wixData.height,
-                position:this.getGlobalPos({...entityData.position}),
-                textureUrl: "/entity/"+wixData.name+".png",
+                position: this.getGlobalPos({...entityData.position}),
+                textureUrl: "/entity/" + wixData.name + ".png",
                 width: wixData.width,
                 name: wixData.name,
-                floatY:wixData.floatY
+                floatY: wixData.floatY
             }
-            switch (wixData.name){
+            switch (wixData.name) {
                 case 'Eol':
-                    entity=new Eol(wixProps);
-                    entity.decide=entity.decideFunction;
+                    entity = new Eol(wixProps);
+                    entity.decide = entity.decideFunction;
                     break;
                 case 'Liquice':
-                    entity=new Liquice(wixProps);
+                    entity = new Liquice(wixProps);
                     break;
                 default:
-                    entity=new Eol(wixProps);
+                    entity = new Eol(wixProps);
             }
             $.addEntity(entity);
             entity.startLife();
         })
     }
 
-    getGlobalPos(localPos:{x:number, z:number}):iThreePosition{
-        return {x:this.position.x+localPos.x,y:this.position.y,z:this.position.z+localPos.z};
+    getGlobalPos(localPos: { x: number, z: number }): iThreePosition {
+        return {x: this.position.x + localPos.x, y: this.position.y, z: this.position.z + localPos.z};
     }
 
-    generateEnvironment(propsData:Array<iChunkPropsData>) {
-        propsData.forEach((propsData,index) => {
-            const envirData=getEnvironmentById(propsData.props_id);
+    generateEnvironment(propsData: Array<iChunkPropsData>) {
+        propsData.forEach((propsData, index) => {
+            const envirData = getEnvironmentById(propsData.props_id);
             //hehe
             const propsProps = {
                 textureName: envirData.textureUrl,
-                position: {...propsData.position, y: 0},
+                position: this.getGlobalPos(propsData.position),
                 name: envirData.name,
                 rotation: 0,
                 height: envirData.height,
@@ -104,23 +104,23 @@ export class Chunk {
                 width: envirData.width,
             }
             let props;
-            switch (envirData.name){
+            switch (envirData.name) {
                 case 'core_shard_1':
-                    props=new CoreShard(propsProps);
-                    if(index==1) props.update()
+                    props = new CoreShard(propsProps);
+                    if (index == 1) props.update()
                     break;
                 case 'crystal_geyser_1':
-                    props=new Props2D(propsProps);
+                    props = new Props2D(propsProps);
                     break;
                 default:
-                    props=new CoreShard(propsProps);
+                    props = new CoreShard(propsProps);
             }
             this.propsInside.push(props)
             $.addEnvironments(props);
         })
         this.propsInside.forEach(propsObject => {
             propsObject.model.renderOrder = 1000 - propsObject.model.position.distanceTo($.engine.camera.camera.position);
-            this.chunkGroup.add(propsObject.model)
+            $.engine.addGameObjectToScene(propsObject.model);
         })
     }
 

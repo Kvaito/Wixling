@@ -16,7 +16,7 @@ export const environments = [
     {
         id:3,
         name:'crystal_core_shard_1',
-        height:1.5,
+        height:1.65,
         width:2,
         textureUrl:'crystal_core_shard_1.png',
     }
