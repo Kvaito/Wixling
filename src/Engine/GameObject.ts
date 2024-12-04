@@ -2,6 +2,8 @@ import {Group} from "three";
 
 export interface GameObject {
     position:iThreePosition,
+    height:number,
+    width:number,
     setPosition: (position: iThreePosition) => void,
     model:Group
     destroy:()=>void,

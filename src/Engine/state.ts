@@ -6,6 +6,7 @@ import type {Environment} from "unenv";
 import type {Effect} from "~/src/Engine/Effect/Effect";
 import type {Props2D} from "~/src/Engine/Environment/Props2D";
 import {Chunk} from "~/src/Engine/Environment/Chunk";
+import type {Item} from "~/src/Engine/Items/Item";
 
 export class GlobalState{
     engine!:Engine
@@ -14,6 +15,7 @@ export class GlobalState{
     entities:Array<Entity>=[];
     environments:Array<Props2D>=[];
     effects:Array<Effect>=[];
+    items:Array<Item>=[];
     ground!:Chunk;
 
     constructor() {
@@ -26,6 +28,10 @@ export class GlobalState{
 
     addEnvironments(environment:Props2D){
         this.environments.push(environment)
+    }
+
+    addItem(item:Item){
+        this.items.push(item)
     }
 
     addEffect(effect:Effect){

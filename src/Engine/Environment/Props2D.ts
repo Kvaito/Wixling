@@ -35,11 +35,15 @@ export class Props2D implements Environment {
     zIndexBuff:number
     position: iThreePosition;
     model = new Group();
+    height: number;
+    width: number;
 
     constructor(props: iProps2D) {
         this.texture = $.textureLoader.load('/environment/' + props.textureName);
         this.texture.colorSpace = SRGBColorSpace
         this.position = props.position;
+        this.height=props.height;
+        this.width=props.width;
         if (props.rotation) this.rotation = props.rotation;
         this.model.name = props.name;
         this.zIndexBuff=props.zIndexBuff??0;
@@ -47,10 +51,10 @@ export class Props2D implements Environment {
         if (props.isSprite) {
             const material = new SpriteMaterial({map: this.texture});
             propsModel = new Sprite(material);
-            propsModel.scale.set(props.width, props.height,1 );
+            propsModel.scale.set(this.width, this.height,1 );
             propsModel.center.set(0.5, 0);
         } else {
-            const planeGeometry = new PlaneGeometry(props.width, props.height);
+            const planeGeometry = new PlaneGeometry(this.width, this.height);
             const planeMaterial = new MeshBasicMaterial({map: this.texture, transparent: true});
             propsModel = new Mesh(planeGeometry, planeMaterial);
             propsModel.rotateY(this.rotation);
@@ -75,5 +79,7 @@ export class Props2D implements Environment {
     getPosition(): iThreePosition {
         return this.position;
     }
+
+
 
 }

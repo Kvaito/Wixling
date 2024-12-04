@@ -4,7 +4,7 @@ export type iChunkData = {
     biome_id: number,
     entities: Array<iChunkEntityData>,
     props: Array<iChunkPropsData>,
-    items: Array<any>,
+    items: Array<iChunkItemsData>,
 }
 
 export type iChunkEntityData={
@@ -14,6 +14,10 @@ export type iChunkEntityData={
 
 export type iChunkPropsData={
     props_id: number,
+    position: { x: number, z: number },
+}
+export type iChunkItemsData={
+    item_id: number,
     position: { x: number, z: number },
 }
 export const worldData: Array<iChunkData> = [
@@ -38,7 +42,7 @@ export const worldData: Array<iChunkData> = [
             {
                 props_id: 1,
                 position: { x: 3, z: 7 }
-            },n
+            },
             {
                 props_id: 1,
                 position: { x: 8, z: 5 }
@@ -124,7 +128,12 @@ export const worldData: Array<iChunkData> = [
                 position: { x: 3, z: 3 }
             },
         ],
-        items: [],
+        items: [
+            {
+                item_id: 1,
+                position: { x: 7, z: 8.5 }
+            },
+        ],
     },
     {
         id: 5,

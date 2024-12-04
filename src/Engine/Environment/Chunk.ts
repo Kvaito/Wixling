@@ -12,13 +12,15 @@ import {
 import {$} from "~/src/Engine/state";
 import {Eol} from "~/src/Engine/Entity/Eol";
 import {CoreShard} from "~/src/Engine/Environment/CoreShard";
-import type {iChunkData, iChunkEntityData, iChunkPropsData} from "~/src/Constants/WorldData";
+import type {iChunkData, iChunkEntityData, iChunkItemsData, iChunkPropsData} from "~/src/Constants/WorldData";
 import type {iThreePosition} from "~/src/Engine/GameObject";
 import {chunkSize} from "~/src/Constants/gameConstants";
 import {getBiomeData} from "~/src/Constants/biomes";
 import {getWixDataById} from "~/src/Constants/wixes";
 import {Liquice} from "~/src/Engine/Entity/Liquice";
 import {getEnvironmentById} from "~/src/Constants/environments";
+import {getItemById} from "~/src/Constants/items";
+import {Item} from "~/src/Engine/Items/Item";
 
 export class Chunk {
     propsInside: Array<any> = []
@@ -27,11 +29,12 @@ export class Chunk {
     biome_id = 0
     entities: Array<iChunkEntityData> = []
     props: Array<iChunkPropsData> = []
-    items: Array<any> = []
+    items:Array<iChunkItemsData>=[]
 
     constructor(props: iChunkData) {
         this.entities = props.entities;
         this.props = props.props;
+        this.items=props.items;
         this.biome_id = props.biome_id;
         const biomeData = getBiomeData(this.biome_id);
         this.position = {x: props.position.x * chunkSize, y: 0, z: props.position.z * chunkSize}
@@ -56,6 +59,7 @@ export class Chunk {
     initializeChunk() {
         this.createEntities(this.entities);
         this.generateEnvironment(this.props);
+        this.makeItems(this.items);
     }
 
     createEntities(entitiesData: Array<iChunkEntityData>) {
@@ -88,6 +92,23 @@ export class Chunk {
 
     getGlobalPos(localPos: { x: number, z: number }): iThreePosition {
         return {x: this.position.x + localPos.x, y: this.position.y, z: this.position.z + localPos.z};
+    }
+
+    makeItems(itemsChunkData:Array<iChunkItemsData>){
+        itemsChunkData.forEach(item => {
+            const itemData=getItemById(item.item_id);
+            const itemProps = {
+                textureName: itemData.textureUrl,
+                position: this.getGlobalPos(item.position),
+                name: itemData.name,
+                height: itemData.height,
+                isSprite: true,
+                width: itemData.width,
+            }
+            const itemObject=new Item(itemProps);
+            $.addItem(itemObject)
+            $.engine.addGameObjectToScene(itemObject.model);
+        })
     }
 
     generateEnvironment(propsData: Array<iChunkPropsData>) {
