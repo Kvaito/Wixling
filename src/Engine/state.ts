@@ -8,34 +8,48 @@ import type {Props2D} from "~/src/Engine/Environment/Props2D";
 import {Chunk} from "~/src/Engine/Environment/Chunk";
 import type {Item} from "~/src/Engine/Items/Item";
 
-export class GlobalState{
-    engine!:Engine
-    player!:Player
+export class GlobalState {
+    engine!: Engine
+    player!: Player
     textureLoader = new TextureLoader();
-    entities:Array<Entity>=[];
-    environments:Array<Props2D>=[];
-    effects:Array<Effect>=[];
-    items:Array<Item>=[];
-    ground!:Chunk;
+    entities: Array<Entity> = [];
+    environments: Array<Props2D> = [];
+    effects: Array<Effect> = [];
+    items: Array<Item> = [];
+    ground!: Chunk;
 
     constructor() {
 
     }
 
-    addEntity(entity:Entity){
+    addEntity(entity: Entity) {
         this.entities.push(entity);
     }
 
-    addEnvironments(environment:Props2D){
+    addEnvironments(environment: Props2D) {
         this.environments.push(environment)
     }
 
-    addItem(item:Item){
+    addItem(item: Item) {
         this.items.push(item)
     }
 
-    addEffect(effect:Effect){
+    addEffect(effect: Effect) {
         this.effects.push(effect)
+    }
+
+    deleteObjectFrom(type:'items'|'entity'|'environment',objectUUID:string){
+        let objectIndex
+        if(type=='items'){
+           objectIndex=this.items.findIndex(item=>item.uuid==objectUUID);
+           this.items.splice(objectIndex,1);
+        }
+    }
+
+    getObjectByUUID(uuid: string):Props2D|Item|Entity {
+        return [...this.environments, ...this.items, ...this.entities].find(object => {
+            return object.uuid == uuid;
+        })
     }
 }
 

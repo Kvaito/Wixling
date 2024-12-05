@@ -1,7 +1,7 @@
 import {
     Color,
     GridHelper, Group,
-    PerspectiveCamera, RepeatWrapping,
+    PerspectiveCamera, Raycaster, RepeatWrapping,
     Scene, SRGBColorSpace, TextureLoader,
     WebGLRenderer
 } from "three";
@@ -20,6 +20,7 @@ export class Engine {
     renderer: WebGLRenderer;
     camera!: GameCamera
     readonly grid: GridHelper;
+    raycaster = new Raycaster();
 
     constructor() {
         console.log('Start engine')
@@ -106,7 +107,8 @@ export class Engine {
             position: {x: 5, y: 0, z: 3},
             height: 1.7,
             width: 0.8,
-            name:'Player'
+            name:'Player',
+            speed:0.2
         });
         $.addEntity($.player);
         $.player.eventListeners();

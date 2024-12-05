@@ -1,6 +1,7 @@
 import {Group} from "three";
 
 export interface GameObject {
+    uuid:string,
     position:iThreePosition,
     height:number,
     width:number,

@@ -4,6 +4,9 @@ import {Vector3} from "three";
 import {Effect} from "~/src/Engine/Effect/Effect";
 import {footPrintCooldown} from "~/src/Constants/scene";
 import type {iThreePosition} from "~/src/Engine/GameObject";
+import {getClickedObject} from "~/src/libs/makeRaycastFromCamera";
+import {usePlayerStore} from "~/src/stores/storePlayer";
+import {Item} from "~/src/Engine/Items/Item";
 
 
 export class Player extends Entity {
@@ -16,9 +19,15 @@ export class Player extends Entity {
     isFootprintCooldown = false
     footPrintCooldownTimer: any;
     movement: Vector3 = new Vector3();
+    reachRadius=2;
 
     eventListeners() {
         console.log('listeners activated')
+        document.addEventListener('click', (event: MouseEvent) => {
+            //Вызвать функцию проверки, на что кликнули. Вернёт объект
+            const clickedModel = getClickedObject(event);
+            if (clickedModel && clickedModel.userData.type == 'Item') this.tryToTakeItem(clickedModel);
+        });
         document.addEventListener('keydown', (event: KeyboardEvent) => {
             if (!this.keysPressed.hasOwnProperty(event.code)) return;
             this.keysPressed[event.code] = true;
@@ -29,6 +38,17 @@ export class Player extends Entity {
             this.keysPressed[event.code] = false;
             this.updatePlayer()
         });
+    }
+
+    tryToTakeItem(itemModel) {
+        //Проверить дистанцию до предмета. Если Венси дотягивается, добавляем
+        console.log('can i take?',itemModel.position,this.model.position,this.reachRadius)
+        if(itemModel.position.distanceTo(this.model.position)>this.reachRadius) return;
+        const itemObject=$.getObjectByUUID(itemModel.uuid);
+        usePlayerStore().addToInventory(itemObject);
+        if (itemObject instanceof Item) {
+            itemObject.taken()
+        }
     }
 
     makeFootPrint(position: iThreePosition, futurePosition: iThreePosition) {
@@ -43,10 +63,11 @@ export class Player extends Entity {
             width: 0.4,
             height: 0.4,
             isSprite: false,
-            rotation: angleFunction([-position.z,-position.x], [-futurePosition.z,-futurePosition.x ]),
+            rotation: angleFunction([-position.z, -position.x], [-futurePosition.z, -futurePosition.x]),
             position: position
         });
     }
+
 
     updatePlayer() {
         const oldPosition = this.position;

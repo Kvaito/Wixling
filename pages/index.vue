@@ -6,10 +6,13 @@
 
 <script>
 import Scene from "~/src/UI/Scene.vue";
+
 export default{
   name:'Game',
   components: {Scene},
+  mounted(){
 
+  }
 }
 </script>
 

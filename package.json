@@ -10,7 +10,7 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
-    "@pinia/nuxt": "^0.5.1",
+    "@pinia/nuxt": "^0.5.5",
     "@types/three": "^0.170.0",
     "@types/uuid": "^10.0.0",
     "cannon-es-debugger": "^1.0.0",
