@@ -8,10 +8,10 @@ import type {iThreePosition} from "~/src/Engine/GameObject";
 
 export class Player extends Entity {
     keysPressed = {
-        w: false,
-        a: false,
-        s: false,
-        d: false
+        KeyW: false,
+        KeyA: false,
+        KeyS: false,
+        KeyD: false
     }
     isFootprintCooldown = false
     footPrintCooldownTimer: any;
@@ -20,13 +20,13 @@ export class Player extends Entity {
     eventListeners() {
         console.log('listeners activated')
         document.addEventListener('keydown', (event: KeyboardEvent) => {
-            if (!this.keysPressed.hasOwnProperty(event.key)) return;
-            this.keysPressed[event.key] = true;
+            if (!this.keysPressed.hasOwnProperty(event.code)) return;
+            this.keysPressed[event.code] = true;
             this.updatePlayer()
         });
         document.addEventListener('keyup', (event: KeyboardEvent) => {
-            if (!this.keysPressed.hasOwnProperty(event.key)) return;
-            this.keysPressed[event.key] = false;
+            if (!this.keysPressed.hasOwnProperty(event.code)) return;
+            this.keysPressed[event.code] = false;
             this.updatePlayer()
         });
     }
@@ -54,18 +54,18 @@ export class Player extends Entity {
         $.engine.camera.camera.getWorldDirection(cameraDirection);
         this.movement = new Vector3();
 
-        if (this.keysPressed.w) {
+        if (this.keysPressed.KeyW) {
             this.movement.add(cameraDirection);
         }
-        if (this.keysPressed.s) {
+        if (this.keysPressed.KeyS) {
             this.movement.add(cameraDirection.clone().negate());
         }
-        if (this.keysPressed.d) {
+        if (this.keysPressed.KeyD) {
             const rightDirection = new Vector3();
             rightDirection.crossVectors(cameraDirection, new Vector3(0, 1, 0));
             this.movement.add(rightDirection);
         }
-        if (this.keysPressed.a) {
+        if (this.keysPressed.KeyA) {
             const rightDirection = new Vector3();
             rightDirection.crossVectors(cameraDirection, new Vector3(0, 1, 0)).negate();
             this.movement.add(rightDirection);
