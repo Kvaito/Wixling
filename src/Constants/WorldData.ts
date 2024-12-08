@@ -176,7 +176,20 @@ export const worldData: Array<iChunkData> = [
                 position: { x: 2, z: 7 }
             }
         ],
-        items: [],
+        items: [
+            {
+                item_id: 1,
+                position: { x: 7, z: 8.5 }
+            },
+            {
+                item_id: 1,
+                position: { x: 8, z: 3 }
+            },
+            {
+                item_id: 1,
+                position: { x: 2, z: 5.32 }
+            },
+        ],
     },
 ]
 

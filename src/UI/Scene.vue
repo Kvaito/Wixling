@@ -1,7 +1,5 @@
 <template>
-  <div ref="engine">
-
-  </div>
+  <div ref="engine"></div>
 </template>
 
 <script >

@@ -19,7 +19,7 @@ export class Player extends Entity {
     isFootprintCooldown = false
     footPrintCooldownTimer: any;
     movement: Vector3 = new Vector3();
-    reachRadius=2;
+    reachRadius = 2;
 
     eventListeners() {
         console.log('listeners activated')
@@ -42,9 +42,9 @@ export class Player extends Entity {
 
     tryToTakeItem(itemModel) {
         //Проверить дистанцию до предмета. Если Венси дотягивается, добавляем
-        console.log('can i take?',itemModel.position,this.model.position,this.reachRadius)
-        if(itemModel.position.distanceTo(this.model.position)>this.reachRadius) return;
-        const itemObject=$.getObjectByUUID(itemModel.uuid);
+        console.log('can i take?', itemModel.position, this.model.position, this.reachRadius)
+        if (itemModel.position.distanceTo(this.model.position) > this.reachRadius) return;
+        const itemObject = $.getObjectByUUID(itemModel.uuid);
         usePlayerStore().addToInventory(itemObject);
         if (itemObject instanceof Item) {
             itemObject.taken()
@@ -102,9 +102,7 @@ export class Player extends Entity {
                 this.setFootPrintCooldown();
             }
         }
-        $.engine.recalcRenderOrderForEnvironment();
-        $.engine.recalcRenderOrderForEffects();
-        $.engine.recalcRenderOrderForEntities();
+        $.engine.recalcAllObjectsRenderOrder();
         $.engine.camera.followPlayer();
     }
 

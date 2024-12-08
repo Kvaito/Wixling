@@ -13,7 +13,6 @@ export function getClickedObject(mouseEvent: MouseEvent) {
 
     // Получаем массив объектов, которые пересекаются с лучом
     const intersects = $.engine.raycaster.intersectObjects($.engine.scene.children);
-    console.log('intersects',intersects);
     let clickedObject;
     // Проверяем, есть ли пересечения
     if (intersects.length > 0) {

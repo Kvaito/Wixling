@@ -108,6 +108,7 @@ export class Chunk {
             const itemObject=new Item(itemProps);
             itemObject.model.userData.type='Item'
             $.addItem(itemObject)
+            itemObject.itemData=itemData;
             $.engine.addGameObjectToScene(itemObject.model);
         })
     }

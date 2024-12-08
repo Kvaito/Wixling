@@ -84,12 +84,27 @@ export class Engine {
         })
     }
 
+    recalcRenderOrderForItems() {
+        $.items.forEach(item => {
+            const modelOnScene = this.getObjectFromSceneByID(item.model.id);
+            if (!modelOnScene) return;
+            modelOnScene.renderOrder = 1000 - modelOnScene.position.distanceTo($.engine.camera.camera.position)
+        })
+    }
+
     recalcRenderOrderForEntities(){
         $.entities.forEach(props => {
             const modelOnScene = this.getObjectFromSceneByID(props.model.id);
             if (!modelOnScene) return;
             modelOnScene.renderOrder = 1000 - modelOnScene.position.distanceTo($.engine.camera.camera.position)
         })
+    }
+
+    recalcAllObjectsRenderOrder(){
+        this.recalcRenderOrderForEffects();
+        this.recalcRenderOrderForEntities();
+        this.recalcRenderOrderForEnvironment();
+        this.recalcRenderOrderForItems();
     }
 
     setContainer(container: HTMLElement) {
@@ -116,6 +131,7 @@ export class Engine {
         window.addEventListener('resize', () => {
             this.resize();
         });
+        this.recalcAllObjectsRenderOrder();
         console.log('Scene after setContainer',this.scene);
         console.log('State of game',$);
     }

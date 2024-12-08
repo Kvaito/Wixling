@@ -1,4 +1,12 @@
-export const items=[
+export type iItemData={
+    id:number,
+    name:string,
+    textureUrl:string,
+    height:number,
+    width:number
+}
+
+export const gameItems:Array<iItemData>=[
     {
         id:0,
         name:'nUlL iTeM',
@@ -16,5 +24,5 @@ export const items=[
 ]
 
 export function getItemById(id:number){
-    return items.find(item=>item.id === id)??items[0];
+    return gameItems.find(item=>item.id === id)??gameItems[0];
 }
