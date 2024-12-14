@@ -1,5 +1,4 @@
 import {defineStore} from "pinia";
-import {getItemById} from "~/src/Constants/items";
 
 type iStateType = {
     inventory: Array<any>

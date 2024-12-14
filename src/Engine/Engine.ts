@@ -9,10 +9,10 @@ import {$} from "~/src/Engine/state";
 import {Chunk} from "~/src/Engine/Environment/Chunk";
 import {Player} from "~/src/Engine/Entity/Player";
 import {GameCamera} from "~/src/Engine/camera";
-import {toKeyAlias} from "@babel/types";
-import uid = toKeyAlias.uid;
 import {worldData} from "~/src/Constants/WorldData";
-import {chunkSize} from "~/src/Constants/gameConstants";
+import {useGlobalConditionStore} from "~/src/stores/storeGlobalCondition";
+import {getSkyColor} from "~/src/libs/getSkyColor";
+import {msInTimeTick} from "~/src/Constants/time";
 
 export class Engine {
     container: HTMLElement;
@@ -34,7 +34,8 @@ export class Engine {
         this.renderer.setAnimationLoop(() => {
             this.render()
         })
-
+        this.startDayNightCycle();
+        this.storeSubscription();
     }
 
 
@@ -53,13 +54,27 @@ export class Engine {
         this.scene.add(object);
     }
 
+    startDayNightCycle() {
+        setInterval(() => {
+            let nextTimeTick = $.currentTime + 1;
+            if (nextTimeTick > useGlobalConditionStore().dayLength) nextTimeTick = 0;
+            useGlobalConditionStore().setTime(nextTimeTick)
+        }, msInTimeTick)
+    }
+
+    onNewTimeTick() {
+        console.log('current time', $.currentTime);
+        this.renderer.setClearColor(new Color(getSkyColor($.currentTime, useGlobalConditionStore().dayLength)));
+
+    }
+
     deleteModelFromScene(model: Group) {
         this.scene.remove(model);
     }
 
     addGround() {
-        worldData.forEach(chunkData=>{
-            const chunk=new Chunk(chunkData)
+        worldData.forEach(chunkData => {
+            const chunk = new Chunk(chunkData)
         })
     }
 
@@ -71,7 +86,7 @@ export class Engine {
         $.environments.forEach(props => {
             const modelOnScene = this.getObjectFromSceneByID(props.model.id);
             if (!modelOnScene) return;
-            modelOnScene.renderOrder = 1000 - modelOnScene.position.distanceTo($.engine.camera.camera.position)+props.zIndexBuff;
+            modelOnScene.renderOrder = 1000 - modelOnScene.position.distanceTo($.engine.camera.camera.position) + props.zIndexBuff;
         })
 
     }
@@ -92,7 +107,7 @@ export class Engine {
         })
     }
 
-    recalcRenderOrderForEntities(){
+    recalcRenderOrderForEntities() {
         $.entities.forEach(props => {
             const modelOnScene = this.getObjectFromSceneByID(props.model.id);
             if (!modelOnScene) return;
@@ -100,7 +115,7 @@ export class Engine {
         })
     }
 
-    recalcAllObjectsRenderOrder(){
+    recalcAllObjectsRenderOrder() {
         this.recalcRenderOrderForEffects();
         this.recalcRenderOrderForEntities();
         this.recalcRenderOrderForEnvironment();
@@ -120,10 +135,10 @@ export class Engine {
         $.player = new Player({
             textureUrl: '/entity/player/Wensy.png',
             position: {x: 5, y: 0, z: 3},
-            height: 1.7,
+            height: 1.6,
             width: 0.8,
-            name:'Player',
-            speed:0.2
+            name: 'Player',
+            speed: 0.2
         });
         $.addEntity($.player);
         $.player.eventListeners();
@@ -132,8 +147,16 @@ export class Engine {
             this.resize();
         });
         this.recalcAllObjectsRenderOrder();
-        console.log('Scene after setContainer',this.scene);
-        console.log('State of game',$);
+        console.log('Scene after setContainer', this.scene);
+        console.log('State of game', $);
+    }
+
+    storeSubscription() {
+        useGlobalConditionStore().$subscribe(async (mutation: unknown, storeState) => {
+            if ($.currentTime == storeState.time) return;
+            $.currentTime = storeState.time;
+            this.onNewTimeTick();
+        })
     }
 }
 

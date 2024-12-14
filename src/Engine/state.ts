@@ -16,6 +16,7 @@ export class GlobalState {
     environments: Array<Props2D> = [];
     effects: Array<Effect> = [];
     items: Array<Item> = [];
+    currentTime=0;
     ground!: Chunk;
 
     constructor() {
