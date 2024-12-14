@@ -10,31 +10,29 @@ export type iEntity = {
     name?: string,
     floatY?: number,
     speed?: number,
+    data?:any,
+    originalId?:number,
 }
 
 export class Entity implements GameObject {
+    originalDataId=0;
     model = new Group();
     position: iThreePosition;
-    height: number;
-    width: number;
+    height: number=0;
+    width: number=0;
     uuid:string;
+    data:any={};
     speed: number = 0.1;
     floatY: number;
     isMoving = false;
     velocity = new Vector3(0, 0, 0);
 
     constructor(props: iEntity) {
-        const playerTexture = $.textureLoader.load(props.textureUrl);
         this.position = props.position;
-        playerTexture.colorSpace = SRGBColorSpace
-        const material = new SpriteMaterial({map: playerTexture});
-        const sprite = new Sprite(material);
-        sprite.center.set(0.5, 0);
+        if(props.hasOwnProperty('originalId')) this.originalDataId=props.originalId;
+        if(props.hasOwnProperty('data')) this.data=props.data;
         if (props.speed) this.speed = props.speed
-        this.height = props.height;
-        this.width = props.width;
-        sprite.scale.set(props.width, props.height, 1);
-        this.model.add(sprite);
+        this.setNewTexture(props.textureUrl,props.height,props.width)
         this.floatY = props.floatY ?? 0;
         this.setPosition(props.position);
         $.engine.addGameObjectToScene(this.model);
@@ -52,6 +50,19 @@ export class Entity implements GameObject {
         this.model.position.add(this.velocity);
         this.position = {x: this.model.position.x, y: this.model.position.y, z: this.model.position.z};
         this.velocity.set(0, 0, 0); // Сбросить скорость после движения
+    }
+
+    setNewTexture(textureUrl: string,height:number,width:number): void {
+        this.model.clear();
+        const playerTexture = $.textureLoader.load(textureUrl);
+        playerTexture.colorSpace = SRGBColorSpace;
+        const material = new SpriteMaterial({map: playerTexture});
+        const sprite = new Sprite(material);
+        sprite.center.set(0.5, 0);
+        sprite.scale.set(width,height, 1);
+        this.height = height;
+        this.width = width;
+        this.model.add(sprite);
     }
 
     goTo(position: iThreePosition) {

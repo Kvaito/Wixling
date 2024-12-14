@@ -72,7 +72,9 @@ export class Chunk {
                 textureUrl: "/entity/" + wixData.name + ".png",
                 width: wixData.width,
                 name: wixData.name,
-                floatY: wixData.floatY
+                floatY: wixData.floatY,
+                data:wixData.data,
+                originalId:wixData.id,
             }
             switch (wixData.name) {
                 case 'Eol':

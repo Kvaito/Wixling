@@ -5,7 +5,7 @@
       <div>
         <input type="range"
                :value="worldTime"
-               @change="(e)=>onTimeRangeInput(e.target.value)"
+               @input="(e)=>onTimeRangeInput(e.target.value)"
                min="0" :max="dayLength">
       </div>
     </div>
@@ -47,6 +47,8 @@ export default {
       this.world.setDayLength(newLength)
     },
     onTimeRangeInput(value) {
+      // console.log('range input',value);
+      value=+value;
       if (value < 1) value = this.dayLength - 2
       if (value > (this.dayLength - 1)) value = 0
       this.world.setTime(value);

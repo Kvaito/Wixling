@@ -9,10 +9,10 @@ import {$} from "~/src/Engine/state";
 import {Chunk} from "~/src/Engine/Environment/Chunk";
 import {Player} from "~/src/Engine/Entity/Player";
 import {GameCamera} from "~/src/Engine/camera";
-import {worldData} from "~/src/Constants/WorldData";
+import {testWorld, worldData} from "~/src/Constants/WorldData";
 import {useGlobalConditionStore} from "~/src/stores/storeGlobalCondition";
 import {getSkyColor} from "~/src/libs/getSkyColor";
-import {msInTimeTick} from "~/src/Constants/time";
+import {msInTimeTick} from "~/src/libs/time";
 
 export class Engine {
     container: HTMLElement;
@@ -63,7 +63,7 @@ export class Engine {
     }
 
     onNewTimeTick() {
-        console.log('current time', $.currentTime);
+        // console.log('current time', $.currentTime);
         this.renderer.setClearColor(new Color(getSkyColor($.currentTime, useGlobalConditionStore().dayLength)));
 
     }
@@ -73,7 +73,10 @@ export class Engine {
     }
 
     addGround() {
-        worldData.forEach(chunkData => {
+        // worldData.forEach(chunkData => {
+        //     const chunk = new Chunk(chunkData)
+        // })
+        testWorld.forEach(chunkData => {
             const chunk = new Chunk(chunkData)
         })
     }
@@ -138,7 +141,8 @@ export class Engine {
             height: 1.6,
             width: 0.8,
             name: 'Player',
-            speed: 0.2
+            speed: 0.2,
+            data:{},
         });
         $.addEntity($.player);
         $.player.eventListeners();
@@ -153,6 +157,7 @@ export class Engine {
 
     storeSubscription() {
         useGlobalConditionStore().$subscribe(async (mutation: unknown, storeState) => {
+            // console.log('react on time',storeState.time)
             if ($.currentTime == storeState.time) return;
             $.currentTime = storeState.time;
             this.onNewTimeTick();

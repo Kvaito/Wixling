@@ -1,6 +1,8 @@
 import {Entity} from "~/src/Engine/Entity/Entity";
 import {Props2D} from "~/src/Engine/Environment/Props2D";
 import {$} from "~/src/Engine/state";
+import type {iDayPeriodType} from "~/src/libs/time";
+import {getDayPeriod} from "~/src/libs/time";
 interface iMemoryEntity extends Entity{
     distance:number
 }
@@ -11,12 +13,14 @@ interface iMemoryProps extends Props2D {
 type iEntityMemory = {
     entities: Array<iMemoryEntity>,
     environment: Array<iMemoryProps>,
+    dayPeriod:iDayPeriodType
 }
 export class Wix extends Entity{
     decisionCooldown = 3000;
     memory: iEntityMemory = {
         entities: [],
-        environment: []
+        environment: [],
+        dayPeriod:'day'
     }
     visionRadius = 7;
     decide=() => {};
@@ -28,6 +32,7 @@ export class Wix extends Entity{
         this.memory.environment.sort((props1, props2) => {
             return props1.distance - props2.distance
         })
+        this.memory.dayPeriod=getDayPeriod($.currentTime);
     }
 
     checkProximity(items: Array<any>, memoryArray: Array<any>) {

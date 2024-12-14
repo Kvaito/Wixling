@@ -20,6 +20,39 @@ export type iChunkItemsData={
     item_id: number,
     position: { x: number, z: number },
 }
+
+export const testWorld:Array<iChunkData>=[
+    {
+        id: 0,
+        position: {x: 0, z: 0},
+        biome_id: 1,
+        entities: [{
+            entity_id: 1,
+            position: {x: 2, z: 3}
+        }
+        ],
+        props: [
+            {
+                props_id: 1,
+                position: { x: 2, z: 3 }
+            },
+            {
+                props_id: 1,
+                position: { x: 6, z: 2 }
+            },
+            {
+                props_id: 1,
+                position: { x: 3, z: 7 }
+            },
+            {
+                props_id: 1,
+                position: { x: 8, z: 5 }
+            },
+        ],
+        items: [],
+    },
+]
+
 export const worldData: Array<iChunkData> = [
     {
         id: 0,

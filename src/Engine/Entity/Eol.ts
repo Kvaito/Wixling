@@ -1,10 +1,8 @@
 import {findRandomTargetPosition} from "~/src/libs/findRandomTargetPosition";
 import {Wix} from "~/src/Engine/Entity/Wix";
+import {getWixDataById} from "~/src/Constants/wixes";
 
-type iEolModes = 'sleep' | 'follow' | 'seek' | 'focus'
-
-
-
+type iEolModes = 'sleep' | 'follow' | 'seek' | 'focus'|'goHome'
 
 export class Eol extends Wix {
     currentMode = 'seek'
@@ -16,7 +14,21 @@ export class Eol extends Wix {
     }
 
     decideFunction=()=> {
-        // console.log('Eol memory',this.memory)
+        console.log('Eol memory',this.memory)
+        //Если время суток уже вечер или ночь, то надо сжаться и вернуться в норку
+        if(this.currentMode=='goHome'&&['afternoon','night'].includes(this.memory.dayPeriod)){
+            this.setMode('seek');
+            this.becomeBig();
+        }
+
+        if(this.currentMode=='goHome') return;
+
+        if( ['morning','day'].includes(this.memory.dayPeriod)){
+            this.setMode('goHome');
+            this.becomeMini();
+            return;
+        }
+
         //Видно лужицу? Идём прямо к ней!
         if(this.currentMode === 'focus') return;
         const shard = this.memory.environment.find(props => props.model.name == 'EssencePaddle')
@@ -41,5 +53,17 @@ export class Eol extends Wix {
 
     }
 
+    becomeMini(){
+        // console.log('Eol becomes mini',this.data);
+        const miniFormData=this.data.mini;
+        this.setNewTexture(miniFormData.imageSrc,miniFormData.height,miniFormData.width);
+        this.floatY = miniFormData.floatY;
+    }
 
+    becomeBig(){
+        // console.log('Eol becomes big');
+        const originalData=getWixDataById(this.originalDataId);
+        this.setNewTexture('/entity/Eol.png',originalData.height,originalData.width);
+        this.floatY = originalData.floatY;
+    }
 }
