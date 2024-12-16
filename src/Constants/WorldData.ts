@@ -38,15 +38,15 @@ export const testWorld:Array<iChunkData>=[
             },
             {
                 props_id: 1,
-                position: { x: 6, z: 2 }
+                position: { x: 5, z: 3.5 }
             },
             {
                 props_id: 1,
                 position: { x: 3, z: 7 }
             },
             {
-                props_id: 1,
-                position: { x: 8, z: 5 }
+                props_id: 4,
+                position: { x: 8, z: 2 }
             },
         ],
         items: [],

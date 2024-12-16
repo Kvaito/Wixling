@@ -19,6 +19,13 @@ export const environments = [
         height:1.65,
         width:2,
         textureUrl:'crystal_core_shard_1.png',
+    },
+    {
+        id:4,
+        name:'eol_burrow',
+        height:8,
+        width:6,
+        textureUrl:'eol_burrow.png',
     }
 ]
 
