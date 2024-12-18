@@ -21,6 +21,7 @@ import {Liquice} from "~/src/Engine/Entity/Liquice";
 import {getEnvironmentById} from "~/src/Constants/environments";
 import {getItemById} from "~/src/Constants/items";
 import {Item} from "~/src/Engine/Items/Item";
+import {EolBurrow} from "~/src/Engine/Environment/EolBurrow";
 
 export class Chunk {
     propsInside: Array<any> = []
@@ -133,6 +134,9 @@ export class Chunk {
                 case 'core_shard_1':
                     props = new CoreShard(propsProps);
                     if (index == 1) props.update()
+                    break;
+                case 'eol_burrow':
+                    props = new EolBurrow(propsProps);
                     break;
                 case 'crystal_geyser_1':
                     props = new Props2D(propsProps);

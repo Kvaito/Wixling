@@ -7,13 +7,14 @@ import type {Effect} from "~/src/Engine/Effect/Effect";
 import type {Props2D} from "~/src/Engine/Environment/Props2D";
 import {Chunk} from "~/src/Engine/Environment/Chunk";
 import type {Item} from "~/src/Engine/Items/Item";
+import type {EolBurrow} from "~/src/Engine/Environment/EolBurrow";
 
 export class GlobalState {
     engine!: Engine
     player!: Player
     textureLoader = new TextureLoader();
     entities: Array<Entity> = [];
-    environments: Array<Props2D> = [];
+    environments: Array<Props2D|EolBurrow> = [];
     effects: Array<Effect> = [];
     items: Array<Item> = [];
     currentTime=0;

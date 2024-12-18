@@ -10,9 +10,10 @@ interface iMemoryProps extends Props2D {
     distance:number
 }
 
+//TODO
 type iEntityMemory = {
     entities: Array<iMemoryEntity>,
-    environment: Array<iMemoryProps>,
+    environment: Array<any>,
     dayPeriod:iDayPeriodType
 }
 export class Wix extends Entity{
@@ -39,7 +40,7 @@ export class Wix extends Entity{
         items.forEach(item => {
             const distance = this.model.position.distanceTo(item.model.position);
             if (distance <= this.visionRadius) {
-                memoryArray.push({...item, distance: distance});
+                memoryArray.push({item, distance: distance});
             }
         });
     }
@@ -49,6 +50,14 @@ export class Wix extends Entity{
             entities: [],
             environment: []
         }
+    }
+
+    becomeInvisible(){
+        this.model.visible=false;
+    }
+
+    becomeVisible(){
+        this.model.visible=true;
     }
 
     startLife() {

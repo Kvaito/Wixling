@@ -4,7 +4,7 @@ export const morningTimePercent=20;
 export const dayTimePercent=40;
 export const afternoonTimePercent=70;
 export const nightTimePercent=90;
-export const msInTimeTick=1000;
+export const msInTimeTick=500;
 
 export type iDayPeriodType='day'|'morning'|'afternoon'|'night'
 
