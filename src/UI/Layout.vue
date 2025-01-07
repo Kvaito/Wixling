@@ -20,6 +20,7 @@ export default {
   color:white;
   position: absolute;
   pointer-events: none;
+  box-sizing: border-box;
   top: 0;
   left: 0;
   width: 100vw;

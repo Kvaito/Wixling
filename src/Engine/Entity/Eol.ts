@@ -4,12 +4,11 @@ import {getWixDataById} from "~/src/Constants/wixes";
 import {Vector3} from "three";
 
 type iEolModes = 'sleep' | 'follow' | 'seek' | 'focus' | 'goHome'
-
 export class Eol extends Wix {
     currentMode = 'seek'
     essenceLevel = 0;
     evaporationRadius = 0.5;
-    burrowGlobalPoint = {x: 7, z: 2}
+    burrowGlobalPoint = {x: 18, z: 4}
     actionDistance = 0.5
 
     setMode(mode: iEolModes) {

@@ -108,10 +108,11 @@ export const worldData: Array<iChunkData> = [
         id: 2,
         position: {x: 1, z: 0},
         biome_id: 1,
-        entities: [{
-            entity_id: 1,
-            position: {x: 2, z: 3}
-        }
+        entities: [
+        //     {
+        //     entity_id: 1,
+        //     position: {x: 2, z: 3}
+        // }
         ],
         props: [
             {
@@ -119,9 +120,9 @@ export const worldData: Array<iChunkData> = [
                 position: { x: 0, z: 3 }
             },
             {
-                props_id: 1,
-                position: { x: 2, z: 7 }
-            }
+                props_id: 4,
+                position: { x: 8, z: 4 }
+            },
         ],
         items: [],
     },
@@ -152,13 +153,13 @@ export const worldData: Array<iChunkData> = [
         biome_id: 2,
         entities: [{
             entity_id: 2,
-            position: {x: 2, z: 3}
+            position: {x: 2.5, z: 5}
         }
         ],
         props: [
             {
                 props_id: 2,
-                position: { x: 3, z: 3 }
+                position: { x: 4, z: 3 }
             },
         ],
         items: [

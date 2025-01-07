@@ -73,12 +73,12 @@ export class Engine {
     }
 
     addGround() {
-        // worldData.forEach(chunkData => {
-        //     const chunk = new Chunk(chunkData)
-        // })
-        testWorld.forEach(chunkData => {
+        worldData.forEach(chunkData => {
             const chunk = new Chunk(chunkData)
         })
+        // testWorld.forEach(chunkData => {
+        //     const chunk = new Chunk(chunkData)
+        // })
     }
 
     getObjectFromSceneByID(id: number) {
