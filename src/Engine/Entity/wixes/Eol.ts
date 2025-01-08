@@ -1,18 +1,27 @@
 import {findRandomTargetPosition} from "~/src/libs/findRandomTargetPosition";
-import {Wix} from "~/src/Engine/Entity/Wix";
+import {Wix} from "~/src/Engine/Entity/wixes/Wix";
 import {getWixDataById} from "~/src/Constants/wixes";
 import {Vector3} from "three";
+import {EolLight,EolLightClassProps} from "~/src/Engine/Entity/EolLight";
 
 type iEolModes = 'sleep' | 'follow' | 'seek' | 'focus' | 'goHome'
+
 export class Eol extends Wix {
     currentMode = 'seek'
     essenceLevel = 0;
     evaporationRadius = 0.5;
     burrowGlobalPoint = {x: 18, z: 4}
     actionDistance = 0.5
+    light:EolLight=new EolLight({...EolLightClassProps,originalId:this.originalDataId});
 
     setMode(mode: iEolModes) {
         this.currentMode = mode;
+        if(mode=='focus'){
+            this.lightsOn();
+        }
+        if(mode!=='focus'){
+            this.lightsOff()
+        }
     }
 
     decideFunction = () => {
@@ -55,7 +64,7 @@ export class Eol extends Wix {
         if (shard) {
             //Лужица прямо передо мной? Испарить!
             if (this.model.position.distanceTo(shard.item.model.position) < this.evaporationRadius) {
-                this.setMode('focus')
+                this.setMode('focus');
             }
             const shardPosition = shard.item.position;
             this.goTo(shardPosition);
@@ -66,11 +75,11 @@ export class Eol extends Wix {
     }
 
     lightsOn() {
-
+        this.model.add(this.light.model);
     }
 
     lightsOff() {
-
+        this.model.remove(this.light.model);
     }
 
     awake(){

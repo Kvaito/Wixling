@@ -10,14 +10,14 @@ import {
     Mesh
 } from "three";
 import {$} from "~/src/Engine/state";
-import {Eol} from "~/src/Engine/Entity/Eol";
+import {Eol} from "~/src/Engine/Entity/wixes/Eol";
 import {CoreShard} from "~/src/Engine/Environment/CoreShard";
 import type {iChunkData, iChunkEntityData, iChunkItemsData, iChunkPropsData} from "~/src/Constants/WorldData";
 import type {iThreePosition} from "~/src/Engine/GameObject";
 import {chunkSize} from "~/src/Constants/gameConstants";
 import {getBiomeData} from "~/src/Constants/biomes";
 import {getWixDataById} from "~/src/Constants/wixes";
-import {Liquice} from "~/src/Engine/Entity/Liquice";
+import {Liquice} from "~/src/Engine/Entity/wixes/Liquice";
 import {getEnvironmentById} from "~/src/Constants/environments";
 import {getItemById} from "~/src/Constants/items";
 import {Item} from "~/src/Engine/Items/Item";

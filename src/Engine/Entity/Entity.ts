@@ -1,6 +1,6 @@
 import type {GameObject, iThreePosition} from "~/src/Engine/GameObject";
 import {$} from "~/src/Engine/state";
-import {Group, Sprite, SpriteMaterial, SRGBColorSpace, Vector3} from "three";
+import {Group, Mesh, MeshBasicMaterial, PlaneGeometry, Sprite, SpriteMaterial, SRGBColorSpace, Vector3} from "three";
 
 export type iEntity = {
     textureUrl: string,
@@ -35,7 +35,11 @@ export class Entity implements GameObject {
         this.setNewTexture(props.textureUrl,props.height,props.width)
         this.floatY = props.floatY ?? 0;
         this.setPosition(props.position);
-        $.engine.addGameObjectToScene(this.model);
+        if((props.data?.hasOwnProperty('autoAdd')&&props.data?.autoAdd)
+            ||(!props.data?.hasOwnProperty('autoAdd'))){
+            $.engine.addGameObjectToScene(this.model);
+        }
+        // $.engine.addGameObjectToScene(this.model);
         this.uuid=this.model.uuid;
         this.model.renderOrder = 1000 - this.model.position.distanceTo($.engine.camera.camera.position);
         if (props.name) this.model.name = props.name;
@@ -54,14 +58,26 @@ export class Entity implements GameObject {
 
     setNewTexture(textureUrl: string,height:number,width:number): void {
         this.model.clear();
-        const playerTexture = $.textureLoader.load(textureUrl);
-        playerTexture.colorSpace = SRGBColorSpace;
-        const material = new SpriteMaterial({map: playerTexture});
+        const newTexture = $.textureLoader.load(textureUrl);
+        this.height = height;
+        this.width = width;
+        newTexture.colorSpace = SRGBColorSpace;
+        if(this.data?.hasOwnProperty('isPlane')&&this.data?.isPlane){
+            const effectTexture = $.textureLoader.load(textureUrl);
+            effectTexture.colorSpace = SRGBColorSpace
+            const planeGeometry = new PlaneGeometry(this.width, this.height);
+            const planeMaterial = new MeshBasicMaterial({map: effectTexture, transparent: true});
+            const propsModel = new Mesh(planeGeometry, planeMaterial);
+            propsModel.rotateX(-Math.PI/2);
+            propsModel.rotateZ(0);
+            propsModel.scale.set(width,height, 1);
+            this.model.add(propsModel);
+            return;
+        }
+        const material = new SpriteMaterial({map: newTexture});
         const sprite = new Sprite(material);
         sprite.center.set(0.5, 0);
         sprite.scale.set(width,height, 1);
-        this.height = height;
-        this.width = width;
         this.model.add(sprite);
     }
 
