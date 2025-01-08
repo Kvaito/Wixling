@@ -76,10 +76,12 @@ export class Eol extends Wix {
 
     lightsOn() {
         this.model.add(this.light.model);
+        this.light.switch(true);
     }
 
     lightsOff() {
         this.model.remove(this.light.model);
+        this.light.switch(false);
     }
 
     awake(){
